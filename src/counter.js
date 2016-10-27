@@ -1,9 +1,18 @@
+// @flow
+
 import React from 'react';
 
 /**
  * A counter button: tap the button to increase the count.
  */
+
+
 class Counter extends React.Component {
+
+    state: {
+        count: number
+    }
+
     constructor() {
         super();
         this.state = {
