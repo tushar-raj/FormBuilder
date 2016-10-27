@@ -16,7 +16,7 @@ Start the development server with this command:
 npm start
 ```
 
-You can see your app running on localhost: 3000
+You can see your app running on http://localhost:3000/
 
  
 
