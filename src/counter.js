@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import { Button } from 'react-bootstrap';
+
 /**
  * A counter button: tap the button to increase the count.
  */
@@ -13,6 +15,8 @@ class Counter extends React.Component {
         count: number
     }
 
+
+
     constructor() {
         super();
         this.state = {
@@ -21,18 +25,21 @@ class Counter extends React.Component {
     }
 
     render() {
-        return ( <button onClick = {
+        return ( <Button onClick = {
                 () => {
                     this.setState({
                         count: this.state.count + 1
                     });
                 }
-            } >
-            Count: {
-                this.state.count
             }
+            bsStyle="info" bsSize="large"
+            >
 
-            </button>
+                Count: {
+                    this.state.count
+                }
+
+            </Button>
         );
     }
 }
