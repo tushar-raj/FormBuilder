@@ -3,12 +3,11 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router';
-
 /**
  * A counter button: tap the button to increase the count.
  */
 
-class Counter extends React.Component {
+class Countdown extends React.Component {
 
     state: {
         count: number
@@ -17,7 +16,7 @@ class Counter extends React.Component {
     constructor() {
         super();
         this.state = {
-            count: 0,
+            count: 23,
         };
     }
 
@@ -28,11 +27,11 @@ class Counter extends React.Component {
                 onClick = {
                     () => {
                         this.setState({
-                            count: this.state.count + 1
+                            count: this.state.count - 1
                         });
                     }
                 }
-                bsStyle="info"
+                bsStyle="danger"
                 bsSize="large"
             >
 
@@ -41,9 +40,9 @@ class Counter extends React.Component {
                 }
 
             </Button>
-            <Link to="/countdown">Go to countdown button</Link>
+            <Link to="/">Go to home</Link>
             </div>
         );
     }
 }
-export default Counter;
+export default Countdown;
