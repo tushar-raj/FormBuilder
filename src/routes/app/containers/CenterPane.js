@@ -9,7 +9,6 @@ import ItemTypes from '../../../constants/itemTypes';
 //react-DnD spec: can contain 'drop', 'hover' and 'canDrop' methods
 const canvasTarget = {
     drop(props) {
-        debugger
         console.log(props)
     }
 };
