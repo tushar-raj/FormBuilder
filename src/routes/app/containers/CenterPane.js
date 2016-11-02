@@ -8,12 +8,12 @@ import { Panel } from 'react-bootstrap';
  * A counter button: tap the button to increase the count.
  */
 
-export default class LeftPane extends React.Component {
+export default class CenterPane extends React.Component {
 
     render() {
         return (
             <Panel>
-            This is the leftpane.
+            This is the CenterPane.
             </Panel>
         );
     }
