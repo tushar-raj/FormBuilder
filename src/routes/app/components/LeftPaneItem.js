@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 
 import ItemTypes from '../../../constants/itemTypes';
 
-//code for react-DnD:
+//react-DnD spec: can contain 'beginDrag', 'endDrag', 'canDrag' and 'isDragging' methods
 const lpiSource = {
     beginDrag(props) {
         console.log('dragging')
@@ -14,6 +14,7 @@ const lpiSource = {
     }
 };
 
+//react-DnD collector function
 function collect(connect, monitor) {
     return {
         connectDragSource: connect.dragSource(),
@@ -43,4 +44,5 @@ LeftPaneItem.propTypes = {
 };
 
 //code for react-DnD:
+//export default DragSource(type, spec, collect)(MyComponent);
 export default DragSource(ItemTypes.LEFTPANEITEM, lpiSource, collect)(LeftPaneItem);

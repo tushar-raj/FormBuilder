@@ -1,17 +1,33 @@
 // @flow
 
 import React from 'react';
-import { Link } from 'react-router';
+import { DropTarget } from 'react-dnd';
 import { Panel } from 'react-bootstrap';
 
-/**
- * A counter button: tap the button to increase the count.
- */
+import ItemTypes from '../../../constants/itemTypes';
 
-export default class CenterPane extends React.Component {
+//react-DnD spec: can contain 'drop', 'hover' and 'canDrop' methods
+const canvasTarget = {
+    drop(props) {
+        debugger
+        console.log(props)
+    }
+};
+
+//react-DnD collector function
+function collect(connect, monitor) {
+    return {
+        connectDropTarget: connect.dropTarget(),
+        isOver: monitor.isOver()
+    };
+}
+
+class CenterPane extends React.Component {
 
     render() {
-        return (
+        const {connectDropTarget, isOver } = this.props;
+
+        return connectDropTarget(
             <div style={{
                 backgroundColor: 'salmon'
             }}>
@@ -26,3 +42,9 @@ export default class CenterPane extends React.Component {
         );
     }
 }
+
+//code for react-DnD:
+//export default DropTarget(types, spec, collect)(MyComponent);
+export default DropTarget(ItemTypes.LEFTPANEITEM, canvasTarget, collect)(CenterPane);
+
+//(the canvas will be made the droptarget later, instead of the whole pane)
