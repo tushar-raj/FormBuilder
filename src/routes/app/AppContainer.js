@@ -1,14 +1,19 @@
 // @flow
 
 import React from 'react';
-//import { Link } from 'react-router';
+
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
+
 import { Grid, Row, Col } from 'react-bootstrap';
 
 import LeftPane from './containers/LeftPane';
 import CenterPane from './containers/CenterPane';
 import RightPane from './containers/RightPane';
 
-export default class AppContainer extends React.Component {
+
+
+class AppContainer extends React.Component {
 
     render() {
         return (
@@ -22,3 +27,6 @@ export default class AppContainer extends React.Component {
         );
     }
 }
+
+//syntax for React-DnD (it needs a wrapped DragDropContext):
+export default DragDropContext(HTML5Backend)(AppContainer);

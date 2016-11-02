@@ -12,9 +12,17 @@ export default class CenterPane extends React.Component {
 
     render() {
         return (
-            <Panel>
-            This is the CenterPane.
-            </Panel>
+            <div style={{
+                backgroundColor: 'salmon'
+            }}>
+                Canvas:
+                <div id="Canvas" style={{
+                    width: '90%',
+                    height: '500px',
+                    margin: 'auto',
+                    backgroundColor: 'white'
+                }}></div>
+            </div>
         );
     }
 }

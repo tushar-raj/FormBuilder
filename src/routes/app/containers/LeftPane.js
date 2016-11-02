@@ -1,20 +1,20 @@
 // @flow
 
 import React from 'react';
-import { Link } from 'react-router';
-import { Panel } from 'react-bootstrap';
+import { ButtonGroup } from 'react-bootstrap';
 
-/**
- * A counter button: tap the button to increase the count.
- */
+import LeftPaneItem from '../components/LeftPaneItem';
+import ItemTypes from '../../../constants/itemTypes';
+
 
 export default class LeftPane extends React.Component {
 
     render() {
         return (
-            <Panel>
-            This is the LeftPane.
-            </Panel>
+            <ButtonGroup vertical>
+                <LeftPaneItem name="Button"/>
+                <LeftPaneItem name="Textbox"/>
+            </ButtonGroup>
         );
     }
 }
