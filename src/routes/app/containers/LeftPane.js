@@ -13,7 +13,7 @@ export default class LeftPane extends React.Component {
     render() {
         return (
             <Panel>
-            This is the leftpane.
+            This is the LeftPane.
             </Panel>
         );
     }

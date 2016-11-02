@@ -5,21 +5,18 @@ import React from 'react';
 //import { PageHeader, Button } from 'react-bootstrap';
 
 import LeftPane from './containers/LeftPane';
-import MiddlePane from './containers/MiddlePane';
+import CenterPane from './containers/CenterPane';
 import RightPane from './containers/RightPane';
 
 export default class AppContainer extends React.Component {
-
-    // Wrapper(){
-    //     return(
-    //         <div className="Wrapper">{this.props.children}</div>
-    //     )
-    // }
-
-
+    
     render() {
         return (
-            <div className="Wrapper">{this.props.children}</div>
+            <div className="Wrapper">
+                <LeftPane />
+                <CenterPane />
+                <RightPane />
+            </div>
         );
     }
 }
