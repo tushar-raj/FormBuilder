@@ -34,6 +34,7 @@ class Canvas extends React.Component {
         const {connectDropTarget, isOver, droppedItemType } = this.props;
         console.log(this.props)
         return connectDropTarget(
+            <div
                 id="Canvas"
                 style={{
                         width: '90%',

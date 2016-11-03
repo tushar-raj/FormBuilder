@@ -10,6 +10,7 @@ export default class CustomDiv extends React.Component {
 
     render() {
         return (
+            <div>{this.props.children}</div>
         );
     }
 }
