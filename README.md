@@ -39,9 +39,6 @@ npm start
 
 You can see your app running on http://localhost:3000/
 
- 
-```
-
 
 Credits
 ---
