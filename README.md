@@ -9,6 +9,7 @@ with...
 - [Webpack](http://webpack.github.io/docs/)
 - [Babel](http://babeljs.io/docs/setup/#installation)
 - [Flow](https://flowtype.org/)
+- [React-router](https://react-router.now.sh/)
 - [React-bootstrap](https://react-bootstrap.github.io/getting-started.html)
 
 and...
