@@ -31,10 +31,13 @@ export default class CenterPane extends React.Component {
                 style={{
                     backgroundColor: 'salmon'
                 }}
-                addChild={this.onAddChild.bind(this)}
+
             >
                 Canvas:
-                <Canvas name="myCanvas" >
+                <Canvas
+                    name="myCanvas"
+                    addChild={this.onAddChild.bind(this)}
+                >
 
                     {kids}
 

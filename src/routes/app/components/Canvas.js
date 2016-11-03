@@ -10,8 +10,7 @@ import CustomDiv from './CustomDiv';
 //react-DnD spec: can contain 'drop', 'hover' and 'canDrop' methods
 const canvasTarget = {
     drop(props, monitor, component) {
-        console.log('drop monitor')
-        console.log(monitor.getItem())
+        props.addChild();
     }
 };
 
@@ -42,8 +41,6 @@ class Canvas extends React.Component {
                         margin: 'auto',
                         backgroundColor: 'white'
                     }}
-                name='abc'
-                onClick={this.props.addChild}
             >
 
             {this.props.children}
