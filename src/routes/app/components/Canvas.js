@@ -4,11 +4,14 @@ import React from 'react';
 import { DropTarget } from 'react-dnd';
 
 import ItemTypes from '../../../constants/itemTypes';
+import LeftPaneItem from './LeftPaneItem';
+import CustomDiv from './CustomDiv';
 
 //react-DnD spec: can contain 'drop', 'hover' and 'canDrop' methods
 const canvasTarget = {
-    drop(props) {
-        console.log(props)
+    drop(props, monitor, component) {
+        console.log('drop monitor')
+        console.log(monitor.getItem())
     }
 };
 
@@ -16,26 +19,42 @@ const canvasTarget = {
 function collect(connect, monitor) {
     return {
         connectDropTarget: connect.dropTarget(),
-        isOver: monitor.isOver()
+        isOver: monitor.isOver(),
+        droppedItemType: monitor.getItemType(),
     };
 }
 
 class Canvas extends React.Component {
 
+    constructor(props: any) {
+        super(props);
+    }
+
     render() {
-        const {connectDropTarget, isOver } = this.props;
-
+        const {connectDropTarget, isOver, droppedItemType } = this.props;
+        console.log(this.props)
         return connectDropTarget(
+                id="Canvas"
+                style={{
+                        width: '90%',
+                        height: '500px',
+                        margin: 'auto',
+                        backgroundColor: 'white'
+                    }}
+                name='abc'
+                onClick={this.props.addChild}
+            >
 
-                <div id="Canvas" style={{
-                    width: '90%',
-                    height: '500px',
-                    margin: 'auto',
-                    backgroundColor: 'white'
-                }}></div>
+            {this.props.children}
+
+            </div>
         );
     }
 }
+
+Canvas.propTypes = {
+    name: React.PropTypes.string,
+};
 
 //code for react-DnD:
 //export default DropTarget(types, spec, collect)(MyComponent);

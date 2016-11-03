@@ -17,10 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <Route path="/" component={Home} />
             <Route path="/app" component={AppContainer} />
         </Router>
-
-
-
-
         ,
         document.getElementById('mount')
     );

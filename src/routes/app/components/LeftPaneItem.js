@@ -9,7 +9,14 @@ import ItemTypes from '../../../constants/itemTypes';
 //react-DnD spec: can contain 'beginDrag', 'endDrag', 'canDrag' and 'isDragging' methods
 const lpiSource = {
     beginDrag(props) {
-        console.log('dragging')
+        console.log('beginDrag')
+        return {'abc': 123};
+    },
+
+    endDrag(props, monitor) {
+        console.log('endDrag')
+        console.log(monitor.getItemType()) // LeftPaneItem
+        console.log(monitor.getItem()) // {'abc': 123}
         return {};
     }
 };
@@ -18,7 +25,8 @@ const lpiSource = {
 function collect(connect, monitor) {
     return {
         connectDragSource: connect.dragSource(),
-        isDragging: monitor.isDragging()
+        isDragging: monitor.isDragging(),
+        hovered: monitor.getItemType(),
     }
 }
 
@@ -30,7 +38,7 @@ class LeftPaneItem extends React.Component {
     }
 
     render() {
-        const { connectDragSource, isDragging } = this.props;
+        const { connectDragSource, isDragging, hovered } = this.props;
         return connectDragSource(
             <div><Button>{this.props.name}</Button></div>
         );
@@ -40,7 +48,7 @@ class LeftPaneItem extends React.Component {
 LeftPaneItem.propTypes = {
     name: React.PropTypes.string,
     connectDragSource: React.PropTypes.func.isRequired,
-    isDragging: React.PropTypes.bool.isRequired
+    isDragging: React.PropTypes.bool.isRequired,
 };
 
 //code for react-DnD:
