@@ -17,6 +17,16 @@ and...
 - [React-DnD](https://gaearon.github.io/react-dnd/) by Dan Abramov.
 
 
+Setup
+---
+
+You'll need the node package manager. Download the source code and run
+
+```
+npm install
+```
+
+
 
 Usage
 ---
@@ -30,21 +40,6 @@ npm start
 You can see your app running on http://localhost:3000/
 
  
-
-Setup
----
-
-```
-npm install
-```
-
-
-
-Compile
----
-
-```
-npm run compile
 ```
 
 
