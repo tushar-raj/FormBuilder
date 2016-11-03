@@ -48,7 +48,7 @@ The setup was created from scratch using Andrew Farmer's build-your-own-startup 
 Documentation
 ---
 
-The app uses ES6 and JSX syntax, with flow for type-checking.
+The app uses ES6 and JSX syntax, which are both transpiled to plain-old JS using Babel. Flow is a dev-dependency for type-checking. Typescript isn't used anywhere.
 
 `www\index.html` contains a single div in which the react app is mounted.
 
