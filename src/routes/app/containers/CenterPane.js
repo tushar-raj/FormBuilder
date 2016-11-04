@@ -5,26 +5,48 @@ import React from 'react';
 import Canvas from '../components/Canvas'
 import LeftPaneItem from '../components/LeftPaneItem';
 import CustomDiv from '../components/CustomDiv';
+import CanvasButton from '../components/CanvasButton';
+import CanvasTextbox from '../components/CanvasTextbox';
+//import canvasMap from '../../../constants/Maps';
 
 export default class CenterPane extends React.Component {
 
+    //using the identifier 'kids' instead of 'children' to avoid confusion with react's special prop 'children'
     state: {
-        numChildren: number
+        numKids: number,
+        kids: Object[],
     }
 
     constructor(props: any) {
         super(props);
         this.state = {
-            numChildren: 1
+            numKids: 0,
+            kids: [],
         };
     }
 
     render() {
-        const kids = [];
+        const canvasKids = [];
 
-        for (var i = 0; i < this.state.numChildren; i += 1) {
-            kids.push(<LeftPaneItem key={i} name={'a' + i} />);
+        // for (var i = 0; i < this.state.numKids; i++) {
+        //     canvasKids.push(<CanvasTextbox key={i} name={'a' + i} />);
+        // };
+
+        //this map is needed for JSX syntax. Dynamic naming of comps needs function names.
+        const components = {
+            'CanvasTextbox': CanvasTextbox,
+            'CanvasButton': CanvasButton,
         };
+
+
+
+        for (var i = 0; i < this.state.numKids; i++) {
+            let kid = this.state.kids[i];
+            let CanvasComp = components[kid.type];
+            canvasKids.push(<CanvasComp key={i} id={kid.id} />);
+        };
+
+
 
         return (
             <div
@@ -39,7 +61,7 @@ export default class CenterPane extends React.Component {
                     addChild={this.onAddChild.bind(this)}
                 >
 
-                    {kids}
+                    {canvasKids}
 
 
                 </Canvas>
@@ -47,9 +69,27 @@ export default class CenterPane extends React.Component {
         );
     }
 
-    onAddChild () {
+    onAddChild(itemSign: Object) {
+        // console.log('itemSign', itemSign)
+
+        //move this elsewhere
+        const leftpaneToCanvasMap = new Map([
+            ['Button', 'CanvasButton'],
+            ['Textbox', 'CanvasTextbox'],
+        ])
+
+        const name = itemSign.name;
+        const compToBeAdded = leftpaneToCanvasMap.get(name);
+        const compId = compToBeAdded ? compToBeAdded.toString() + '1' : '1';
+
+        const newKid = {'type': compToBeAdded,  'id': compId};
+
+        const newKidArray = [...this.state.kids, newKid]
+
+
         this.setState({
-            numChildren: this.state.numChildren + 1
+            numKids: this.state.numKids + 1,
+            kids: newKidArray,
         });
     }
 }

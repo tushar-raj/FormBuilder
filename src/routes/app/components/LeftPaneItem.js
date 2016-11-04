@@ -10,13 +10,14 @@ import ItemTypes from '../../../constants/itemTypes';
 const lpiSource = {
     beginDrag(props) {
         console.log('beginDrag')
-        return {'abc': 123};
+        return {'name': props.name};
     },
 
-    endDrag(props, monitor) {
-        console.log('endDrag')
-        console.log(monitor.getItemType()) // LeftPaneItem
-        console.log(monitor.getItem()) // {'abc': 123}
+    endDrag(props, monitor, component) {
+        // console.log('endDrag')
+        // console.log(monitor.getItemType()) // LeftPaneItem
+        // console.log(monitor.getItem()) // {'abc': 123}
+        // console.log(monitor.getDropResult())
         return {};
     }
 };
