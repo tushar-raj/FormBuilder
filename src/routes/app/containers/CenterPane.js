@@ -4,7 +4,6 @@ import React from 'react';
 
 import Canvas from '../components/Canvas'
 import LeftPaneItem from '../components/LeftPaneItem';
-import CustomDiv from '../components/CustomDiv';
 import CanvasButton from '../components/CanvasButton';
 import CanvasTextbox from '../components/CanvasTextbox';
 import { leftpaneToCanvasMap } from '../../../constants/Maps';
@@ -47,12 +46,7 @@ export default class CenterPane extends React.Component {
         };
 
         return (
-            <div
-                style={{
-                    backgroundColor: 'salmon'
-                }}
-            >
-                Canvas:
+            <div id='canvasWrapper'>
                 <Canvas
                     name="myCanvas"
                     addChild={this.onAddChild.bind(this)}

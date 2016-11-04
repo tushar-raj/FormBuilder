@@ -16,7 +16,7 @@ const lpiSource = {
     endDrag(props, monitor, component) {
         // console.log('endDrag')
         // console.log(monitor.getItemType()) // LeftPaneItem
-        // console.log(monitor.getItem()) // {'abc': 123}
+        // console.log(monitor.getItem()) // {'name': someName}
         // console.log(monitor.getDropResult())
         return {};
     }

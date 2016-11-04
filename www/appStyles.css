@@ -1,0 +1,48 @@
+#mount {
+    background-color: azure;
+}
+
+#mainGrid {
+    background-color: white;
+}
+
+.mainColumns {
+    border: 4px solid black;
+    height: 100%;
+    padding: 10px;
+}
+
+#canvasWrapper {
+    height: 100%;
+    position: relative;
+}
+
+#canvas {
+    width: 90%;
+    height: 70%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid lightcoral;
+    border-radius: 10px;
+}
+
+#leftPaneColumn{
+    border-right: 0px;
+    background-color: lightsteelblue;
+}
+
+#centerPaneColumn{
+    background-color: ghostwhite;
+}
+
+#rightPaneColumn{
+    border-left: 0px;
+    background-color: lightsteelblue;
+}
+
+.mainGridRow{
+    background-color: azure;
+}

@@ -37,12 +37,6 @@ class Canvas extends React.Component {
         return connectDropTarget(
             <div
                 id="Canvas"
-                style={{
-                        width: '90%',
-                        height: '500px',
-                        margin: 'auto',
-                        backgroundColor: 'white'
-                    }}
             >
 
             {this.props.children}
