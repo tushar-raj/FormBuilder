@@ -7,7 +7,7 @@ import LeftPaneItem from '../components/LeftPaneItem';
 import CustomDiv from '../components/CustomDiv';
 import CanvasButton from '../components/CanvasButton';
 import CanvasTextbox from '../components/CanvasTextbox';
-//import canvasMap from '../../../constants/Maps';
+import { leftpaneToCanvasMap } from '../../../constants/Maps';
 
 export default class CenterPane extends React.Component {
 
@@ -34,17 +34,11 @@ export default class CenterPane extends React.Component {
     render() {
         const canvasKids = [];
 
-        // for (var i = 0; i < this.state.numKids; i++) {
-        //     canvasKids.push(<CanvasTextbox key={i} name={'a' + i} />);
-        // };
-
         //this map is needed for JSX syntax. Dynamic naming of comps needs function names.
         const components = {
             'CanvasTextbox': CanvasTextbox,
             'CanvasButton': CanvasButton,
         };
-
-
 
         for (var i = 0; i < this.state.numKids; i++) {
             let kid = this.state.kids[i];
@@ -52,14 +46,11 @@ export default class CenterPane extends React.Component {
             canvasKids.push(<CanvasComp key={i} id={kid.id} />);
         };
 
-
-
         return (
             <div
                 style={{
                     backgroundColor: 'salmon'
                 }}
-
             >
                 Canvas:
                 <Canvas
@@ -69,20 +60,12 @@ export default class CenterPane extends React.Component {
 
                     {canvasKids}
 
-
                 </Canvas>
             </div>
         );
     }
 
     onAddChild(itemSign: Object) {
-        // console.log('itemSign', itemSign)
-
-        //move this elsewhere
-        const leftpaneToCanvasMap = new Map([
-            ['Button', 'CanvasButton'],
-            ['Textbox', 'CanvasTextbox'],
-        ])
 
         const name = itemSign.name;
         const compToBeAdded = leftpaneToCanvasMap.get(name) || 'dummyKey';
@@ -93,14 +76,10 @@ export default class CenterPane extends React.Component {
             [compToBeAdded] : compCountMap[compToBeAdded] + 1
         })
 
-
-
         const compId = compToBeAdded ? compToBeAdded.toString() + this.state.compCountMap[compToBeAdded] : '1';
 
         const newKid = {'type': compToBeAdded,  'id': compId};
-
         const newKidArray = [...this.state.kids, newKid]
-
 
         this.setState({
             numKids: this.state.numKids + 1,

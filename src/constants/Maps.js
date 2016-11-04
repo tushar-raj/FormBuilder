@@ -1,4 +1,5 @@
-export default const leftpaneToCanvasMap = new Map([
+
+export const leftpaneToCanvasMap = new Map([
     ['Button', 'CanvasButton'],
     ['Textbox', 'CanvasTextbox'],
 ])
