@@ -10,7 +10,9 @@ import CustomDiv from './CustomDiv';
 //react-DnD spec: can contain 'drop', 'hover' and 'canDrop' methods
 const canvasTarget = {
     drop(props, monitor, component) {
-        props.addChild();
+        const draggedItemSignature = monitor.getItem();
+        props.addChild(draggedItemSignature);
+        return {'fromDrop': 123}
     }
 };
 
@@ -31,7 +33,7 @@ class Canvas extends React.Component {
 
     render() {
         const {connectDropTarget, isOver, droppedItemType } = this.props;
-        console.log(this.props)
+        // console.log(this.props)
         return connectDropTarget(
             <div
                 id="Canvas"
