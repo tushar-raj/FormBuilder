@@ -14,7 +14,7 @@ class CanvasTextbox extends React.Component {
     render() {
         return (
             <div>
-                <ControlLabel>Label</ControlLabel>
+                <ControlLabel>{this.props.id}</ControlLabel>
                 <FormControl
                     type="text"
                     placeholder="Enter text"

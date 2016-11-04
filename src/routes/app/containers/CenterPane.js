@@ -15,6 +15,7 @@ export default class CenterPane extends React.Component {
     state: {
         numKids: number,
         kids: Object[],
+        compCountMap: Object,
     }
 
     constructor(props: any) {
@@ -22,6 +23,11 @@ export default class CenterPane extends React.Component {
         this.state = {
             numKids: 0,
             kids: [],
+            compCountMap: {
+                'CanvasTextbox': 0,
+                'CanvasButton': 0,
+            }
+
         };
     }
 
@@ -79,8 +85,17 @@ export default class CenterPane extends React.Component {
         ])
 
         const name = itemSign.name;
-        const compToBeAdded = leftpaneToCanvasMap.get(name);
-        const compId = compToBeAdded ? compToBeAdded.toString() + '1' : '1';
+        const compToBeAdded = leftpaneToCanvasMap.get(name) || 'dummyKey';
+
+        const compCountMap = this.state.compCountMap;
+
+        const newCountMap = Object.assign({}, compCountMap, {
+            [compToBeAdded] : compCountMap[compToBeAdded] + 1
+        })
+
+
+
+        const compId = compToBeAdded ? compToBeAdded.toString() + this.state.compCountMap[compToBeAdded] : '1';
 
         const newKid = {'type': compToBeAdded,  'id': compId};
 
@@ -90,6 +105,7 @@ export default class CenterPane extends React.Component {
         this.setState({
             numKids: this.state.numKids + 1,
             kids: newKidArray,
+            compCountMap: newCountMap,
         });
     }
 }
