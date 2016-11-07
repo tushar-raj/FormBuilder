@@ -5,7 +5,7 @@ import { FormControl, ControlLabel } from 'react-bootstrap';
 
 
 
-class CanvasTextbox extends React.Component {
+class FormTextbox extends React.Component {
 
     constructor(props: any) {
         super(props);
@@ -24,10 +24,10 @@ class CanvasTextbox extends React.Component {
     }
 }
 
-CanvasTextbox.propTypes = {
+FormTextbox.propTypes = {
     id: React.PropTypes.number,
 };
 
 //code for react-DnD:
 //export default DragSource(type, spec, collect)(MyComponent);
-export default CanvasTextbox//DragSource(ItemTypes.LEFTPANEITEM, lpiSource, collect)(CanvasTextbox);
+export default FormTextbox//DragSource(ItemTypes.LEFTPANEITEM, lpiSource, collect)(FormTextbox);

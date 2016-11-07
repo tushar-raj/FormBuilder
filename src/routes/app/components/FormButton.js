@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 
 
 
-class CanvasButton extends React.Component {
+class FormButton extends React.Component {
 
     constructor(props: any) {
         super(props);
@@ -18,10 +18,10 @@ class CanvasButton extends React.Component {
     }
 }
 
-CanvasButton.propTypes = {
+FormButton.propTypes = {
     id: React.PropTypes.string,
 };
 
 //code for react-DnD:
 //export default DragSource(type, spec, collect)(MyComponent);
-export default CanvasButton//DragSource(ItemTypes.LEFTPANEITEM, lpiSource, collect)(CanvasButton);
+export default FormButton//DragSource(ItemTypes.LEFTPANEITEM, lpiSource, collect)(FormButton);

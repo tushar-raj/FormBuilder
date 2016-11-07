@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { CanvasRadioButton } from "./CanvasRadioButton.js"
+import { FormRadioButton } from "./FormRadioButton.js"
 
 
 
-class CanvasRadioGroup extends React.Component {
+class FormRadioGroup extends React.Component {
 
     static defaultProps: {
         groupLabelName: string
@@ -29,7 +29,7 @@ class CanvasRadioGroup extends React.Component {
         }
 
         const listOfItems = elementData.map(
-            (item,index) => <CanvasRadioButton
+            (item,index) => <FormRadioButton
                 key={index} name={item.name}
                 labelName={item.labelName}
                 radioBtnValue={item.value}
@@ -38,7 +38,7 @@ class CanvasRadioGroup extends React.Component {
 
         return (
             <div>
-                <h3>{this.props.groupLabelName || CanvasRadioGroup.defaultProps.groupLabelName}</h3>
+                <h3>{this.props.groupLabelName || FormRadioGroup.defaultProps.groupLabelName}</h3>
 
                 {listOfItems}
 
@@ -47,11 +47,11 @@ class CanvasRadioGroup extends React.Component {
     }
 }
 
-CanvasRadioGroup.defaultProps = {
+FormRadioGroup.defaultProps = {
    groupLabelName:'Default Radio Label'
 };
 
-CanvasRadioGroup.propTypes = {
+FormRadioGroup.propTypes = {
     id: React.PropTypes.string,
 };
 
@@ -59,4 +59,4 @@ CanvasRadioGroup.propTypes = {
 
 //code for react-DnD:
 //export default DragSource(type, spec, collect)(MyComponent);
-export default CanvasRadioGroup//DragSource(ItemTypes.LEFTPANEITEM, lpiSource, collect)(CanvasRadioGroup);
+export default FormRadioGroup//DragSource(ItemTypes.LEFTPANEITEM, lpiSource, collect)(FormRadioGroup);

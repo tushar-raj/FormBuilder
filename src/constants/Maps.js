@@ -1,7 +1,7 @@
 
 export const leftpaneToCanvasMap = new Map([
-    ['Button', 'CanvasButton'],
-    ['Textbox', 'CanvasTextbox'],
-    ['RadioButtonGroup', 'CanvasRadioGroup'],
+    ['Button', 'FormButton'],
+    ['Textbox', 'FormTextbox'],
+    ['RadioButtonGroup', 'FormRadioGroup'],
 
 ])

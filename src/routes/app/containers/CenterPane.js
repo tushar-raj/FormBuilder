@@ -4,9 +4,9 @@ import React from 'react';
 
 import Canvas from '../components/Canvas'
 import LeftPaneItem from '../components/LeftPaneItem';
-import CanvasButton from '../components/CanvasButton';
-import CanvasTextbox from '../components/CanvasTextbox';
-import CanvasRadioGroup from '../components/CanvasRadioGroup';
+import FormButton from '../components/FormButton';
+import FormTextbox from '../components/FormTextbox';
+import FormRadioGroup from '../components/FormRadioGroup';
 import { leftpaneToCanvasMap } from '../../../constants/Maps';
 
 export default class CenterPane extends React.Component {
@@ -24,9 +24,9 @@ export default class CenterPane extends React.Component {
             numKids: 0,
             kids: [],
             compCountMap: {
-                'CanvasTextbox': 0,
-                'CanvasButton': 0,
-                'CanvasRadioGroup': 0,
+                'FormTextbox': 0,
+                'FormButton': 0,
+                'FormRadioGroup': 0,
             }
 
         };
@@ -37,9 +37,9 @@ export default class CenterPane extends React.Component {
 
         //this map is needed for JSX syntax. Dynamic naming of comps needs function names.
         const components = {
-            'CanvasTextbox': CanvasTextbox,
-            'CanvasButton': CanvasButton,
-            'CanvasRadioGroup': CanvasRadioGroup,
+            'FormTextbox': FormTextbox,
+            'FormButton': FormButton,
+            'FormRadioGroup': FormRadioGroup,
         };
 
         for (var i = 0; i < this.state.numKids; i++) {
