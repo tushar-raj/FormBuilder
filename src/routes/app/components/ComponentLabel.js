@@ -1,6 +1,6 @@
 import React from 'react';
 
-class DraggableComponentLabel extends React.Component{
+class ComponentLabel extends React.Component{
 	render() {
 	    return(
         <div className='componentLabels'>
@@ -11,9 +11,10 @@ class DraggableComponentLabel extends React.Component{
   	}
 }
 
-DraggableComponentLabel.propTypes = {
+ComponentLabel.propTypes = {
   imagePath:React.PropTypes.string,
-  componentTitle:React.PropTypes.string
+  componentTitle:React.PropTypes.string,
+  iconUnicode:React.PropTypes.string,
 };
 
-export { DraggableComponentLabel };
+export { ComponentLabel };

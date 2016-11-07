@@ -1,51 +1,57 @@
 // @flow
 
 import React from 'react';
-import { ButtonGroup } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import LeftPaneItem from '../components/LeftPaneItem';
 import ItemTypes from '../../../constants/itemTypes';
+// import textboxImg from '../assets/input_textbox.png'
 
 const basicImagePath = '../assets/';
+
+// const basicImagePath = '/';
 
 /*This needs to be moved elsewhere */
 
 const arrOfComponentLabels = [{
-    imagePath: basicImagePath + 'textarea.png',
+    imagePath: 'input_textarea.png',
     componentTitle: 'Text Area',
-    name: ''
+    iconUnicode: '',
+    name: '',
 }, {
-    imagePath: basicImagePath + 'inputtext.png',
+    imagePath: 'input_textbox.png',
     componentTitle: 'Textbox',
-    name: 'Textbox'
+    iconUnicode: '▭',
+    name: 'Textbox',
 }, {
-    imagePath: basicImagePath + 'radio_button.png',
+    imagePath: 'options_radio.png',
     componentTitle: 'Radio Button Group',
-    name: 'RadioButtonGroup'
+    iconUnicode: '🔘',
+    name: 'RadioButtonGroup',
 }, {
-    imagePath: basicImagePath + 'checkbox.png',
+    imagePath: 'options_checkbox.png',
     componentTitle: 'Checkbox Group',
-    name: ''
+    iconUnicode: '☑',
+    name: '',
 }, {
-    imagePath: basicImagePath + 'drop_down_list.png',
+    imagePath: 'input_selectbox.png',
     componentTitle: 'Dropdown',
-    name: ''
+    iconUnicode: '',
+    name: '',
 }, {
-    imagePath: basicImagePath + 'button.jpg',
+    imagePath: 'input_password.png',
     componentTitle: 'Button',
-    name: 'Button'
+    iconUnicode: '',
+    name: 'Button',
 }];
 
-const componentLabelItems = arrOfComponentLabels.map( (item,index) =>
-    /*
-    Ideally some unique id should be used for key,
-    for the time being index has been used,
-    this should be replaced once stable Ids are available
-    */
+const leftPaneItems = arrOfComponentLabels.map(
+    (item, index) =>
         <LeftPaneItem
             key = { index }
             imagePath = { item.imagePath }
             componentTitle = { item.componentTitle }
+            iconUnicode = { item.iconUnicode }
             name = { item.name }
         />
     );
@@ -53,9 +59,9 @@ export default class LeftPane extends React.Component {
 
     render() {
         return (
-          <div>
-           {componentLabelItems}
-          </div>
+            <Grid>
+                { leftPaneItems }
+            </Grid>
         );
     }
 }
