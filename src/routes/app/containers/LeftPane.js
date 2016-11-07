@@ -16,32 +16,26 @@ const basicImagePath = '../assets/';
 const arrOfComponentLabels = [{
     imagePath: 'input_textarea.png',
     componentTitle: 'Text Area',
-    iconUnicode: '',
     name: '',
 }, {
     imagePath: 'input_textbox.png',
     componentTitle: 'Textbox',
-    iconUnicode: '▭',
     name: 'Textbox',
 }, {
     imagePath: 'options_radio.png',
     componentTitle: 'Radio Button Group',
-    iconUnicode: '🔘',
     name: 'RadioButtonGroup',
 }, {
     imagePath: 'options_checkbox.png',
     componentTitle: 'Checkbox Group',
-    iconUnicode: '☑',
     name: '',
 }, {
     imagePath: 'input_selectbox.png',
     componentTitle: 'Dropdown',
-    iconUnicode: '',
     name: '',
 }, {
-    imagePath: 'input_password.png',
+    imagePath: 'button_ok.png',
     componentTitle: 'Button',
-    iconUnicode: '',
     name: 'Button',
 }];
 
@@ -51,7 +45,6 @@ const leftPaneItems = arrOfComponentLabels.map(
             key = { index }
             imagePath = { item.imagePath }
             componentTitle = { item.componentTitle }
-            iconUnicode = { item.iconUnicode }
             name = { item.name }
         />
     );
