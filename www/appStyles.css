@@ -46,6 +46,45 @@
 .mainGridRow{
     background-color: azure;
 }
+
+#leftPane{
+
+}
+
+.leftpaneitem{
+    display: flex;
+    border: 1px solid black;
+    margin: 12px;
+    align-items: center;
+    background-color: lavenderblush;
+    box-shadow: 3px 3px 10px black;
+    border-radius: 5px;
+}
+
+.leftpaneitemImage{
+    flex: 0 1 auto;
+    margin-left: 5px;
+}
+
+.leftpaneitemText{
+    flex: 0 1 auto;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .componentLabels{
   width:235px;
   min-height:30px;

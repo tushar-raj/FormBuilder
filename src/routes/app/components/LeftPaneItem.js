@@ -44,12 +44,18 @@ class LeftPaneItem extends React.Component {
         const { connectDragSource, isDragging, hovered } = this.props;
         var i = 'input_textbox.png';
         return connectDragSource(
-            //<div><Button>{this.props.name}</Button></div>
-
-            <div className='componentLabels'><Button>
-              <img src={require("../assets/" + this.props.imagePath)} title={this.props.componentTitle}/>
-              <span>{this.props.componentTitle}</span>
-            </Button></div>
+            <div className='leftpaneitem'>
+                <img
+                    src = { require("../assets/" + this.props.imagePath) }
+                    title = { this.props.componentTitle }
+                    className = 'leftPaneItemImage'
+                />
+                <span
+                    className = 'leftPaneItemText'
+                >
+                    {this.props.componentTitle}
+                </span>
+            </div>
         );
     }
 }

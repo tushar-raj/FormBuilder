@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
 
 import LeftPaneItem from '../components/LeftPaneItem';
 import ItemTypes from '../../../constants/itemTypes';
@@ -13,33 +12,35 @@ const basicImagePath = '../assets/';
 
 /*This needs to be moved elsewhere */
 
-const arrOfComponentLabels = [{
-    imagePath: 'input_textarea.png',
-    componentTitle: 'Text Area',
-    name: '',
-}, {
-    imagePath: 'input_textbox.png',
-    componentTitle: 'Textbox',
-    name: 'Textbox',
-}, {
-    imagePath: 'options_radio.png',
-    componentTitle: 'Radio Button Group',
-    name: 'RadioButtonGroup',
-}, {
-    imagePath: 'options_checkbox.png',
-    componentTitle: 'Checkbox Group',
-    name: '',
-}, {
-    imagePath: 'input_selectbox.png',
-    componentTitle: 'Dropdown',
-    name: '',
-}, {
-    imagePath: 'button_ok.png',
-    componentTitle: 'Button',
-    name: 'Button',
-}];
+const leftPaneItemArray = [
+    {
+        imagePath: 'input_textbox.png',
+        componentTitle: 'Textbox',
+        name: 'Textbox',
+    }, {
+        imagePath: 'input_textarea.png',
+        componentTitle: 'Text Area',
+        name: '',
+    }, {
+        imagePath: 'options_checkbox.png',
+        componentTitle: 'Checkbox Group',
+        name: '',
+    }, {
+        imagePath: 'options_radio.png',
+        componentTitle: 'Radio Button Group',
+        name: 'RadioButtonGroup',
+    }, {
+        imagePath: 'input_selectbox.png',
+        componentTitle: 'Dropdown',
+        name: '',
+    }, {
+        imagePath: 'button_ok.png',
+        componentTitle: 'Button',
+        name: 'Button',
+    }
+];
 
-const leftPaneItems = arrOfComponentLabels.map(
+const leftPaneItems = leftPaneItemArray.map(
     (item, index) =>
         <LeftPaneItem
             key = { index }
@@ -52,9 +53,9 @@ export default class LeftPane extends React.Component {
 
     render() {
         return (
-            <Grid>
+            <div id = 'LeftPane'>
                 { leftPaneItems }
-            </Grid>
+            </div>
         );
     }
 }

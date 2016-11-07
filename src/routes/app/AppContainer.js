@@ -23,9 +23,9 @@ class AppContainer extends React.Component {
                     <Col md={12}><TopPane /></Col>
                 </Row>
                 <Row>
-                    <Col md={3} id='leftPaneColumn' className='mainColumns'><LeftPane/></Col>
-                    <Col md={6} id='centerPaneColumn' className='mainColumns'><CenterPane /></Col>
-                    <Col md={3} id='rightPaneColumn' className='mainColumns'><RightPane /></Col>
+                    <Col sm={2} xs={2} md={2} id='leftPaneColumn' className='mainColumns'><LeftPane/></Col>
+                    <Col sm={8} xs={8} md={8} id='centerPaneColumn' className='mainColumns'><CenterPane /></Col>
+                    <Col sm={2} xs={2} md={2} id='rightPaneColumn' className='mainColumns'><RightPane /></Col>
                 </Row>
             </Grid>
         );
