@@ -6,7 +6,7 @@ import Canvas from '../components/Canvas'
 import LeftPaneItem from '../components/LeftPaneItem';
 import CanvasButton from '../components/CanvasButton';
 import CanvasTextbox from '../components/CanvasTextbox';
-import RadioButtonGroup from '../components/radioButtonGroup';
+import CanvasRadioGroup from '../components/CanvasRadioGroup';
 import { leftpaneToCanvasMap } from '../../../constants/Maps';
 
 export default class CenterPane extends React.Component {
@@ -26,7 +26,7 @@ export default class CenterPane extends React.Component {
             compCountMap: {
                 'CanvasTextbox': 0,
                 'CanvasButton': 0,
-                'RadioButtonGroup':0
+                'CanvasRadioGroup': 0,
             }
 
         };
@@ -39,12 +39,13 @@ export default class CenterPane extends React.Component {
         const components = {
             'CanvasTextbox': CanvasTextbox,
             'CanvasButton': CanvasButton,
-            'RadioButtonGroup':RadioButtonGroup
+            'CanvasRadioGroup': CanvasRadioGroup,
         };
 
         for (var i = 0; i < this.state.numKids; i++) {
             let kid = this.state.kids[i];
             let CanvasComp = components[kid.type];
+            console.log(kid)
             canvasKids.push(<CanvasComp key={i} id={kid.id} />);
         };
 
@@ -67,7 +68,6 @@ export default class CenterPane extends React.Component {
         const name = itemSign.name;
         console.log('name',name)
         const compToBeAdded = leftpaneToCanvasMap.get(name) || 'dummyKey';
-console.log('compToBeAdded',compToBeAdded)
         const compCountMap = this.state.compCountMap;
 
         const newCountMap = Object.assign({}, compCountMap, {
@@ -75,7 +75,6 @@ console.log('compToBeAdded',compToBeAdded)
         })
 
         const compId = compToBeAdded ? compToBeAdded.toString() + this.state.compCountMap[compToBeAdded] : '1';
-console.log('compId',compId)
         const newKid = {'type': compToBeAdded,  'id': compId};
         const newKidArray = [...this.state.kids, newKid]
 

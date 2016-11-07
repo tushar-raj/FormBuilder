@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CustomRadioButton extends React.Component{
+class CanvasRadioButton extends React.Component{
 	render() {
 	    return(
         <div>
@@ -13,14 +13,14 @@ class CustomRadioButton extends React.Component{
   	}
 }
 
-CustomRadioButton.defaultProps = {
+CanvasRadioButton.defaultProps = {
   name:'Custom Radio Button',
   labelName:'Custom Label',
   radioBtnValue:'Custom Value'
 };
 
-CustomRadioButton.propTypes = {
+CanvasRadioButton.propTypes = {
   name:React.PropTypes.string
 };
 
-export { CustomRadioButton };
+export { CanvasRadioButton };

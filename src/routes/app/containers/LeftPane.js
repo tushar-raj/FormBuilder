@@ -8,14 +8,16 @@ import ItemTypes from '../../../constants/itemTypes';
 
 const basicImagePath = '../assets/';
 
+/*This needs to be moved elsewhere */
+
 const arrOfComponentLabels = [{
     imagePath: basicImagePath + 'textarea.png',
     componentTitle: 'Text Area',
     name: ''
 }, {
     imagePath: basicImagePath + 'inputtext.png',
-    componentTitle: 'Input Text',
-    name: ''
+    componentTitle: 'Textbox',
+    name: 'Textbox'
 }, {
     imagePath: basicImagePath + 'radio_button.png',
     componentTitle: 'Radio Button Group',
@@ -31,7 +33,7 @@ const arrOfComponentLabels = [{
 }, {
     imagePath: basicImagePath + 'button.jpg',
     componentTitle: 'Button',
-    name: ''
+    name: 'Button'
 }];
 
 const componentLabelItems = arrOfComponentLabels.map( (item,index) =>
@@ -44,7 +46,7 @@ const componentLabelItems = arrOfComponentLabels.map( (item,index) =>
             key = { index }
             imagePath = { item.imagePath }
             componentTitle = { item.componentTitle }
-            name = { item.name } 
+            name = { item.name }
         />
     );
 export default class LeftPane extends React.Component {

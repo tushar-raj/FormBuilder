@@ -19,7 +19,7 @@ class CanvasButton extends React.Component {
 }
 
 CanvasButton.propTypes = {
-    id: React.PropTypes.number,
+    id: React.PropTypes.string,
 };
 
 //code for react-DnD:
