@@ -3,6 +3,7 @@
 import React from 'react';
 import { DragSource } from 'react-dnd';
 import { Button } from 'react-bootstrap';
+import {DraggableComponentLabel} from './ComponentLabel';
 
 import ItemTypes from '../../../constants/itemTypes';
 
@@ -41,7 +42,8 @@ class LeftPaneItem extends React.Component {
     render() {
         const { connectDragSource, isDragging, hovered } = this.props;
         return connectDragSource(
-            <div><Button>{this.props.name}</Button></div>
+            //<div><Button>{this.props.name}</Button></div>
+            <div><DraggableComponentLabel imagePath={this.props.imagePath} componentTitle={this.props.componentTitle} /></div>
         );
     }
 }

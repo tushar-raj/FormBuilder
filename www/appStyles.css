@@ -46,3 +46,24 @@
 .mainGridRow{
     background-color: azure;
 }
+.componentLabels{
+  width:235px;
+  min-height:30px;
+  height:auto;
+  padding:5px;
+  margin:10px;
+  border:2px solid grey;
+  border-radius:15px;
+  position:relative;
+  background-color: moccasin;
+}
+.componentLabels > span{
+  font-size:17px;
+  position:absolute;
+  top:25%;
+  margin-left:15px;
+}
+.componentLabels > img{
+  height:50;
+  width:50;
+}
