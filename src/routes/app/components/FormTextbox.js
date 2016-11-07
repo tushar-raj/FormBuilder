@@ -25,7 +25,7 @@ class FormTextbox extends React.Component {
 }
 
 FormTextbox.propTypes = {
-    id: React.PropTypes.number,
+    id: React.PropTypes.string,
 };
 
 //code for react-DnD:

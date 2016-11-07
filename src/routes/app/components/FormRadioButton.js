@@ -5,8 +5,13 @@ class FormRadioButton extends React.Component{
 	    return(
         <div>
   	      <label>
-            <input type="radio" name={this.props.name} value={this.props.radioBtnValue} />
-             {this.props.labelName}
+            <input
+				type = "radio"
+				name = { this.props.name }
+				value = { this.props.radioBtnValue }
+			/>
+				{ this.props.labelName }
+
           </label>
         </div>
 	    );
@@ -14,13 +19,13 @@ class FormRadioButton extends React.Component{
 }
 
 FormRadioButton.defaultProps = {
-  name:'Custom Radio Button',
-  labelName:'Custom Label',
-  radioBtnValue:'Custom Value'
+	name:'Custom Radio Button',
+	labelName:'Custom Label',
+	radioBtnValue:'Custom Value'
 };
 
 FormRadioButton.propTypes = {
-  name:React.PropTypes.string
+  name: React.PropTypes.string
 };
 
 export { FormRadioButton };
