@@ -19,8 +19,8 @@
 }
 
 #canvas {
-    width: 90%;
-    height: 70%;
+    width: 99%;
+    min-height: 99%;
     background-color: white;
     position: absolute;
     top: 50%;
