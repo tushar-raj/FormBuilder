@@ -15,7 +15,31 @@ import TopPane from './containers/TopPane';
 
 
 class AppContainer extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            currentSelectedComponentData:{},
+            selectedComponentUpdatedData:{}
+        }
+        this.onGetCurrentSelectedComponentData = this.onGetCurrentSelectedComponentData.bind(this);
+        this.onChangingListOfEditableElements = this.onChangingListOfEditableElements.bind(this);
+        this.onReceiveUpdatedData = this.onReceiveUpdatedData.bind(this);
+    }
 
+    onGetCurrentSelectedComponentData(componentData){
+        console.log('componentData in appcontainer', componentData)
+        this.setState({currentSelectedComponentData:componentData});
+    }
+
+    onChangingListOfEditableElements(currentList){
+        console.log('currentlist in parent', currentList)
+        this.setState({currentSelectedComponentData:currentList})
+    }
+
+    onReceiveUpdatedData(updatedData){
+        console.log('updatedData', updatedData)
+        this.setState({selectedComponentUpdatedData:updatedData});
+    }
     render() {
         return (
             <Grid id='mainGrid' className=''>
@@ -24,8 +48,12 @@ class AppContainer extends React.Component {
                 </Row>
                 <Row>
                     <Col md={2} sm={2} xs={2} id='leftPaneColumn' className='mainColumns w3-theme-l2'><LeftPane/></Col>
-                    <Col md={7} sm={7} xs={7} id='centerPaneColumn' className='mainColumns w3-theme-l4'><CenterPane /></Col>
-                    <Col md={3} sm={3} xs={3} id='rightPaneColumn' className='mainColumns w3-theme-l2'><RightPane /></Col>
+                    <Col md={7} sm={7} xs={7} id='centerPaneColumn' className='mainColumns w3-theme-l4'>
+                        <CenterPane selectedComponentUpdatedData = { this.state.selectedComponentUpdatedData } getCurrentSelectedComponentData = { this.onGetCurrentSelectedComponentData }/>
+                    </Col>
+                    <Col md={3} sm={3} xs={3} id='rightPaneColumn' className='mainColumns w3-theme-l2'>
+                        <RightPane receiveUpdatedData={this.onReceiveUpdatedData} componentToEdit = { this.state.currentSelectedComponentData } changeListOfEditableElements = { this.onChangingListOfEditableElements }/>
+                    </Col>
                 </Row>
             </Grid>
         );
