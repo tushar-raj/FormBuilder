@@ -6,12 +6,12 @@ import Canvas from '../components/Canvas'
 import LeftPaneItem from '../components/LeftPaneItem';
 import FormButton from '../components/FormButton';
 import FormTextbox from '../components/FormTextbox';
-import FormDropdownButton from '../components/FormDropdownButton'
-import FormTextArea from '../components/FormTextArea';
 import FormRadioGroup from '../components/FormRadioGroup';
 import FormCheckboxGroup from '../components/FormCheckboxGroup';
-import FormSelectGroup from '../components/FormSelectGroup';
 import { leftpaneToCanvasMap } from '../../../constants/Maps';
+import FormDropdownButton from '../components/FormDropdownButton'
+import FormTextArea from '../components/FormTextArea';
+import FormSelectGroup from '../components/FormSelectGroup';
 
 export default class CenterPane extends React.Component {
 
@@ -34,12 +34,22 @@ export default class CenterPane extends React.Component {
                 'FormRadioGroup': 0,
                 'FormCheckboxGroup':0,
                 'FormDropdownButton':0,
-                'FormSelectGroup':0
+                'FormSelectGroup':0,
             }
 
         };
+        this.getComponentData = this.getComponentData.bind(this);
     }
 
+    getComponentData(componentData){
+        console.log('click received in center pane',componentData);
+        this.props.getCurrentSelectedComponentData(componentData);
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        console.log('triggered')
+
+        return true;
+    }
     render() {
         const canvasKids = [];
 
@@ -51,14 +61,14 @@ export default class CenterPane extends React.Component {
             'FormRadioGroup': FormRadioGroup,
             'FormCheckboxGroup':FormCheckboxGroup,
             'FormDropdownButton':FormDropdownButton,
-            'FormSelectGroup' : FormSelectGroup
+            'FormSelectGroup' : FormSelectGroup,
         };
 
         for (var i = 0; i < this.state.numKids; i++) {
             let kid = this.state.kids[i];
             let CanvasComp = components[kid.type];
             console.log(kid)
-            canvasKids.push(<CanvasComp key={i} id={kid.id} />);
+            canvasKids.push(<CanvasComp key={i} id={kid.id} getComponentData = { this.getComponentData }/>);
         };
 
         return (
