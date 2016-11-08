@@ -13,7 +13,7 @@ class FormButton extends React.Component {
 
     render() {
         return (
-            <div><Button>{this.props.id}</Button></div>
+            <div className='formComponent'><Button>{this.props.id}</Button></div>
         );
     }
 }

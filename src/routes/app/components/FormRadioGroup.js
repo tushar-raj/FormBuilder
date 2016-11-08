@@ -37,7 +37,7 @@ class FormRadioGroup extends React.Component {
         );
 
         return (
-            <div>
+            <div  className='formComponent' >
                 <h3> { this.props.groupLabelName || FormRadioGroup.defaultProps.groupLabelName } </h3>
 
                 {listOfItems}

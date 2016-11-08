@@ -57,7 +57,7 @@
     margin: 12px;
     align-items: center;
     background-color: lavenderblush;
-    box-shadow: 3px 3px 10px black;
+    box-shadow: -3px 3px 10px black;
     border-radius: 5px;
 }
 
@@ -70,6 +70,11 @@
     flex: 0 1 auto;
     margin-left: 5px;
     font-weight: bold;
+    color: darkgreen;
+}
+
+.formComponent{
+    margin: 5px;
 }
 
 

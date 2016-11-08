@@ -13,7 +13,7 @@ class FormTextbox extends React.Component {
 
     render() {
         return (
-            <div>
+            <div  className='formComponent' >
                 <ControlLabel>{this.props.id}</ControlLabel>
                 <FormControl
                     type="text"
