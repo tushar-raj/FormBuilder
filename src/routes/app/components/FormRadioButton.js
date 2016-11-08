@@ -1,31 +1,22 @@
 import React from 'react';
+import { Radio } from 'react-bootstrap';
 
 class FormRadioButton extends React.Component{
 	render() {
 	    return(
-        <div>
-  	      <label>
-            <input
-				type = "radio"
-				name = { this.props.name }
-				value = { this.props.radioBtnValue }
-			/>
-				{ this.props.labelName }
-
-          </label>
-        </div>
+			<Radio value = { this.props.labelName }>
+		      {this.props.labelName}
+		    </Radio>
 	    );
   	}
 }
 
 FormRadioButton.defaultProps = {
-	name:'Custom Radio Button',
-	labelName:'Custom Label',
-	radioBtnValue:'Custom Value'
+	labelName:'Custom Label'
 };
 
 FormRadioButton.propTypes = {
-  name: React.PropTypes.string
+  labelName: React.PropTypes.string
 };
 
 export { FormRadioButton };

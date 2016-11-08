@@ -7,6 +7,7 @@ import LeftPaneItem from '../components/LeftPaneItem';
 import FormButton from '../components/FormButton';
 import FormTextbox from '../components/FormTextbox';
 import FormRadioGroup from '../components/FormRadioGroup';
+import FormCheckboxGroup from '../components/FormCheckboxGroup';
 import { leftpaneToCanvasMap } from '../../../constants/Maps';
 
 export default class CenterPane extends React.Component {
@@ -27,6 +28,7 @@ export default class CenterPane extends React.Component {
                 'FormTextbox': 0,
                 'FormButton': 0,
                 'FormRadioGroup': 0,
+                'FormCheckboxGroup':0
             }
 
         };
@@ -40,6 +42,7 @@ export default class CenterPane extends React.Component {
             'FormTextbox': FormTextbox,
             'FormButton': FormButton,
             'FormRadioGroup': FormRadioGroup,
+            'FormCheckboxGroup':FormCheckboxGroup
         };
 
         for (var i = 0; i < this.state.numKids; i++) {

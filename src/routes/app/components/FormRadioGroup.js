@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Button } from 'react-bootstrap';
+
 import { FormRadioButton } from "./FormRadioButton.js"
 
 
@@ -28,20 +28,15 @@ class FormRadioGroup extends React.Component {
             ];
         }
 
-        const listOfItems = elementData.map(
-            (item,index) => <FormRadioButton
-                key={index} name={item.name}
-                labelName={item.labelName}
-                radioBtnValue={item.value}
+        const listOfItems = elementData.map((item,index) =>
+            <FormRadioButton key = { index } labelName = { item.labelName }
             />
         );
 
         return (
-            <div  className='formComponent' >
+            <div className='formComponent' >
                 <h3> { this.props.groupLabelName || FormRadioGroup.defaultProps.groupLabelName } </h3>
-
                 {listOfItems}
-
             </div>
         );
     }

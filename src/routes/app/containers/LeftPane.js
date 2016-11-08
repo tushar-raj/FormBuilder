@@ -24,7 +24,7 @@ const leftPaneItemArray = [
     }, {
         imagePath: 'options_checkbox.png',
         componentTitle: 'Checkbox Group',
-        name: '',
+        name: 'CheckboxGroup',
     }, {
         imagePath: 'options_radio.png',
         componentTitle: 'Radio Button Group',
