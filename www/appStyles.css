@@ -1,9 +1,10 @@
 #mount {
-    background-color: azure;
+    /*background-color: azure;*/
 }
 
 #mainGrid {
-    background-color: white;
+    /*background-color: white;*/
+    width: 98%;
 }
 
 .mainColumns {
@@ -25,26 +26,27 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 2px solid lightcoral;
+    border: 2px solid;
     border-radius: 10px;
+    box-shadow: 3px 3px 20px gray;
 }
 
 #leftPaneColumn{
     border-right: 0px;
-    background-color: lightsteelblue;
+    /*background-color: lightsteelblue;*/
 }
 
 #centerPaneColumn{
-    background-color: ghostwhite;
+    /*background-color: ghostwhite;*/
 }
 
 #rightPaneColumn{
     border-left: 0px;
-    background-color: lightsteelblue;
+    /*background-color: lightsteelblue;*/
 }
 
 .mainGridRow{
-    background-color: azure;
+    background-color: white;
 }
 
 #leftPane{
@@ -56,9 +58,13 @@
     border: 1px solid black;
     margin: 12px;
     align-items: center;
-    background-color: lavenderblush;
+    /*background-color: lavenderblush;*/
     box-shadow: -3px 3px 10px black;
     border-radius: 5px;
+}
+
+.leftpaneitem:hover{
+    background-color: black !important;
 }
 
 .leftpaneitemImage{
@@ -70,7 +76,7 @@
     flex: 0 1 auto;
     margin-left: 5px;
     font-weight: bold;
-    color: darkgreen;
+    /*color: darkgreen;*/
 }
 
 .formComponent{

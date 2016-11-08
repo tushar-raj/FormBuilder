@@ -18,14 +18,14 @@ class AppContainer extends React.Component {
 
     render() {
         return (
-            <Grid id='mainGrid'>
+            <Grid id='mainGrid' className=''>
                 <Row className='mainGridRow'>
                     <Col md={12}><TopPane /></Col>
                 </Row>
                 <Row>
-                    <Col sm={2} xs={2} md={2} id='leftPaneColumn' className='mainColumns'><LeftPane/></Col>
-                    <Col sm={8} xs={8} md={8} id='centerPaneColumn' className='mainColumns'><CenterPane /></Col>
-                    <Col sm={2} xs={2} md={2} id='rightPaneColumn' className='mainColumns'><RightPane /></Col>
+                    <Col md={2} sm={2} xs={2} id='leftPaneColumn' className='mainColumns w3-theme-l2'><LeftPane/></Col>
+                    <Col md={8} sm={8} xs={7} id='centerPaneColumn' className='mainColumns w3-theme-l4'><CenterPane /></Col>
+                    <Col md={2} sm={2} xs={3} id='rightPaneColumn' className='mainColumns w3-theme-l2'><RightPane /></Col>
                 </Row>
             </Grid>
         );

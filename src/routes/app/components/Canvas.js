@@ -35,7 +35,7 @@ class Canvas extends React.Component {
         const {connectDropTarget, isOver, droppedItemType } = this.props;
         // console.log(this.props)
         return connectDropTarget(
-            <div
+            <div className='w3-border-theme'
                 id="Canvas"
             >
 

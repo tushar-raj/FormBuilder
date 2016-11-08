@@ -54,6 +54,7 @@ export default class CenterPane extends React.Component {
                 <Canvas
                     name="myCanvas"
                     addChild={this.onAddChild.bind(this)}
+                    className='w3-border-theme'
                 >
 
                     {canvasKids}

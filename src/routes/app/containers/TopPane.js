@@ -9,7 +9,7 @@ export default class LeftPane extends React.Component {
 
     render() {
         return (
-            <PageHeader>
+            <PageHeader className='w3-text-theme'>
                 Welcome to Form Builder
             </PageHeader>
         );
