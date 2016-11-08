@@ -44,7 +44,15 @@ You can see your app running on http://localhost:3000/
 Credits
 ---
 
-The setup was created from scratch using Andrew Farmer's build-your-own-startup [tutorial](http://andrewhfarmer.com/build-your-own-starter/#0-intro). Apart from the official docs of the tools mentioned, Brad Westfall's [blog posts](https://css-tricks.com/learning-react-router/) were very helpful. The folder structure was inspired by the popular [react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit), although their code wasn't used.
+The setup was created from scratch using Andrew Farmer's build-your-own-startup [tutorial](http://andrewhfarmer.com/build-your-own-starter/#0-intro). Apart from the official docs of the tools mentioned, Brad Westfall's [blog posts](https://css-tricks.com/learning-react-router/) were very helpful.
+
+The folder structure was inspired by the popular [react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit), although their code wasn't used.
+
+Modular CSS was introduced with the help of [this article](http://javascriptplayground.com/blog/2016/07/css-modules-webpack-react/) by Jack Franklin
+
+The icons in the left pane were designed by Dave Shea and are free for use. The set is provided by [Chalkwork](http://chalkwork.com/). (Since their site appears to be down, the images can be found [here](http://www.mezzoblue.com/icons/chalkwork/html/))
+
+
 
 Documentation
 ---
@@ -56,5 +64,7 @@ The app uses ES6 and JSX syntax, which are both transpiled to plain-old JS using
 `src\main.js` is currently the entry point of the application. It uses react-router to render different componets on different routes. Routes are managed using hash-history.
 
 The app has a fractal folder structure with separate folders containing containers and presentational components for each route.
+
+The CSS is also made modular with the help of webpack loaders `style-loader` and `css-loader`.
 
 `src\routes\app\AppContainer.js` houses the actual app. It is the `DragDropContext` required by react-DnD.
