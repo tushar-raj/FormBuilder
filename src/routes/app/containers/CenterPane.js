@@ -6,6 +6,7 @@ import Canvas from '../components/Canvas'
 import LeftPaneItem from '../components/LeftPaneItem';
 import FormButton from '../components/FormButton';
 import FormTextbox from '../components/FormTextbox';
+import FormTextArea from '../components/FormTextArea';
 import FormRadioGroup from '../components/FormRadioGroup';
 import FormCheckboxGroup from '../components/FormCheckboxGroup';
 import { leftpaneToCanvasMap } from '../../../constants/Maps';
@@ -26,6 +27,7 @@ export default class CenterPane extends React.Component {
             kids: [],
             compCountMap: {
                 'FormTextbox': 0,
+                'FormTextArea': 0,
                 'FormButton': 0,
                 'FormRadioGroup': 0,
                 'FormCheckboxGroup':0
@@ -40,6 +42,7 @@ export default class CenterPane extends React.Component {
         //this map is needed for JSX syntax. Dynamic naming of comps needs function names.
         const components = {
             'FormTextbox': FormTextbox,
+            'FormTextArea': FormTextArea,
             'FormButton': FormButton,
             'FormRadioGroup': FormRadioGroup,
             'FormCheckboxGroup':FormCheckboxGroup

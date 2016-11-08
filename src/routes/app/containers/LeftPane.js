@@ -20,7 +20,7 @@ const leftPaneItemArray = [
     }, {
         imagePath: 'input_textarea.png',
         componentTitle: 'Text Area',
-        name: '',
+        name: 'TextArea',
     }, {
         imagePath: 'options_checkbox.png',
         componentTitle: 'Checkbox Group',
