@@ -18,7 +18,7 @@
     position: relative;
 }
 
-#canvas {
+/*#canvas {
     width: 99%;
     min-height: 99%;
     background-color: white;
@@ -29,7 +29,7 @@
     border: 2px solid;
     border-radius: 10px;
     box-shadow: 3px 3px 20px gray;
-}
+}*/
 
 #leftPaneColumn{
     border-right: 0px;

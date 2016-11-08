@@ -1,0 +1,12 @@
+.canvas {
+    width: 99%;
+    min-height: 99%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px gray;
+}

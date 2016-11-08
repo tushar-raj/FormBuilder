@@ -11,6 +11,7 @@ with...
 - [Flow](https://flowtype.org/)
 - [React-router](https://react-router.now.sh/)
 - [React-bootstrap](https://react-bootstrap.github.io/getting-started.html)
+- [W3 CSS Themes](http://www.w3schools.com/w3css/w3css_color_themes.asp)
 
 and...
 
@@ -57,4 +58,3 @@ The app uses ES6 and JSX syntax, which are both transpiled to plain-old JS using
 The app has a fractal folder structure with separate folders containing containers and presentational components for each route.
 
 `src\routes\app\AppContainer.js` houses the actual app. It is the `DragDropContext` required by react-DnD.
-

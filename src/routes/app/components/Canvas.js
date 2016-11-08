@@ -7,6 +7,8 @@ import ItemTypes from '../../../constants/itemTypes';
 import LeftPaneItem from './LeftPaneItem';
 import CustomDiv from './CustomDiv';
 
+import styles from '../styles/canvas.css'
+
 //react-DnD spec: can contain 'drop', 'hover' and 'canDrop' methods
 const canvasTarget = {
     drop(props, monitor, component) {
@@ -36,7 +38,7 @@ class Canvas extends React.Component {
         // console.log(this.props)
         return connectDropTarget(
             <div className='w3-border-theme'
-                id="Canvas"
+                className = {styles.canvas}
             >
 
             {this.props.children}
