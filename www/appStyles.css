@@ -59,7 +59,7 @@
     margin: 12px;
     align-items: center;
     /*background-color: lavenderblush;*/
-    box-shadow: -3px 3px 10px black;
+    box-shadow: -3px 3px 9px #444;
     border-radius: 5px;
 }
 
@@ -84,36 +84,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-.componentLabels{
-  width:235px;
-  min-height:30px;
-  height:auto;
-  padding:5px;
-  margin:10px;
-  border:2px solid grey;
-  border-radius:15px;
-  position:relative;
-  background-color: moccasin;
-}
-.componentLabels > span{
-  font-size:17px;
-  position:absolute;
-  top:25%;
-  margin-left:15px;
-}
-.componentLabels > img{
-  height:50;
-  width:50;
+.themeButtonWrapper{
+    float: right;
 }
