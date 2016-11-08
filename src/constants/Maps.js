@@ -4,5 +4,7 @@ export const leftpaneToCanvasMap = new Map([
     ['Textbox', 'FormTextbox'],
     ['TextArea', 'FormTextArea'],
     ['RadioButtonGroup', 'FormRadioGroup'],
-    ['CheckboxGroup', 'FormCheckboxGroup']
+    ['CheckboxGroup', 'FormCheckboxGroup'],
+    ['DropdownButton', 'FormDropdownButton'],
+    ['SelectGroup', 'FormSelectGroup']
 ])

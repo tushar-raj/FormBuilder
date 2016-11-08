@@ -32,7 +32,7 @@ const leftPaneItemArray = [
     }, {
         imagePath: 'input_selectbox.png',
         componentTitle: 'Dropdown',
-        name: '',
+        name: 'DropdownButton',
     }, {
         imagePath: 'button_ok.png',
         componentTitle: 'Button',

@@ -6,9 +6,11 @@ import Canvas from '../components/Canvas'
 import LeftPaneItem from '../components/LeftPaneItem';
 import FormButton from '../components/FormButton';
 import FormTextbox from '../components/FormTextbox';
+import FormDropdownButton from '../components/FormDropdownButton'
 import FormTextArea from '../components/FormTextArea';
 import FormRadioGroup from '../components/FormRadioGroup';
 import FormCheckboxGroup from '../components/FormCheckboxGroup';
+import FormSelectGroup from '../components/FormSelectGroup';
 import { leftpaneToCanvasMap } from '../../../constants/Maps';
 
 export default class CenterPane extends React.Component {
@@ -30,7 +32,9 @@ export default class CenterPane extends React.Component {
                 'FormTextArea': 0,
                 'FormButton': 0,
                 'FormRadioGroup': 0,
-                'FormCheckboxGroup':0
+                'FormCheckboxGroup':0,
+                'FormDropdownButton':0,
+                'FormSelectGroup':0
             }
 
         };
@@ -45,7 +49,9 @@ export default class CenterPane extends React.Component {
             'FormTextArea': FormTextArea,
             'FormButton': FormButton,
             'FormRadioGroup': FormRadioGroup,
-            'FormCheckboxGroup':FormCheckboxGroup
+            'FormCheckboxGroup':FormCheckboxGroup,
+            'FormDropdownButton':FormDropdownButton,
+            'FormSelectGroup' : FormSelectGroup
         };
 
         for (var i = 0; i < this.state.numKids; i++) {
