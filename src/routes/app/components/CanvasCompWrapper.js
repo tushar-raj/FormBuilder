@@ -3,7 +3,7 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
-import flow from 'lodash/flow';
+import flow from 'lodash.flow';
 
 import ItemTypes from '../../../constants/itemTypes';
 
