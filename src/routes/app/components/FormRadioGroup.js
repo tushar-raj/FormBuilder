@@ -17,34 +17,37 @@ class FormRadioGroup extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
-        console.log('uid', this.props.id);
         this.props.getComponentData(this.currentItems)
     }
 
     render() {
 
-        let elementData = this.props.dataForGeneratingElements;
-        if(typeof elementData == 'undefined' || elementData.length == 0){
-            elementData = [
-                {labelName:'Default Value 1'},
-                {labelName:'Default Value 2'}
-            ];
+        let elementDataObj = this.props.dataForGeneratingElements;
+        if(typeof elementDataObj == 'undefined'){
+            elementDataObj = {
+                elementData:[
+                    {labelName:'Default Value 1'},
+                    {labelName:'Default Value 2'}
+                ],
+                label:'Default Radio Label'
+            }
+
         }
 
         this.currentItems = {
           id:this.props.id,
           component:'FormRadioGroup',
-          elementData:elementData,
-          label:this.props.groupLabelName || RadioButtonGroup.defaultProps.groupLabelName
+          elementData:elementDataObj.elementData,
+          label:elementDataObj.label
         }
 
-        const listOfItems = elementData.map((item,index) =>
+        const listOfItems = elementDataObj.elementData.map((item,index) =>
             <FormRadioButton key = { index } labelName = { item.labelName } />
         );
 
         return (
             <div className='formComponent' onClick={this.handleClick}>
-                <h3> { this.props.groupLabelName || FormRadioGroup.defaultProps.groupLabelName } </h3>
+                <h3> { elementDataObj.label } </h3>
                 {listOfItems}
             </div>
         );

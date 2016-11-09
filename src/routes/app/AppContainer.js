@@ -12,7 +12,7 @@ import CenterPane from './containers/CenterPane';
 import RightPane from './containers/RightPane';
 import TopPane from './containers/TopPane';
 
-
+import PubSub from './PubSub/PubSub'
 
 class AppContainer extends React.Component {
     constructor(props){
@@ -21,14 +21,15 @@ class AppContainer extends React.Component {
             currentSelectedComponentData:{},
             selectedComponentUpdatedData:{}
         }
+
         this.onGetCurrentSelectedComponentData = this.onGetCurrentSelectedComponentData.bind(this);
         this.onChangingListOfEditableElements = this.onChangingListOfEditableElements.bind(this);
         this.onReceiveUpdatedData = this.onReceiveUpdatedData.bind(this);
     }
 
     onGetCurrentSelectedComponentData(componentData){
-        console.log('componentData in appcontainer', componentData)
-        this.setState({currentSelectedComponentData:componentData});
+        console.log('componentData in appcontainer', componentData);
+        PubSub.publish('fillRightPaneWithData', componentData);
     }
 
     onChangingListOfEditableElements(currentList){
@@ -38,7 +39,7 @@ class AppContainer extends React.Component {
 
     onReceiveUpdatedData(updatedData){
         console.log('updatedData', updatedData)
-        this.setState({selectedComponentUpdatedData:updatedData});
+        PubSub.publish('updateCanvasComponent', updatedData);
     }
     render() {
         return (
@@ -52,7 +53,7 @@ class AppContainer extends React.Component {
                         <CenterPane selectedComponentUpdatedData = { this.state.selectedComponentUpdatedData } getCurrentSelectedComponentData = { this.onGetCurrentSelectedComponentData }/>
                     </Col>
                     <Col md={3} sm={3} xs={3} id='rightPaneColumn' className='mainColumns w3-theme-l2'>
-                        <RightPane receiveUpdatedData={this.onReceiveUpdatedData} componentToEdit = { this.state.currentSelectedComponentData } changeListOfEditableElements = { this.onChangingListOfEditableElements }/>
+                        <RightPane receiveUpdatedData={this.onReceiveUpdatedData} changeListOfEditableElements = { this.onChangingListOfEditableElements }/>
                     </Col>
                 </Row>
             </Grid>

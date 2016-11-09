@@ -12,6 +12,7 @@ import { leftpaneToCanvasMap } from '../../../constants/Maps';
 import FormDropdownButton from '../components/FormDropdownButton'
 import FormTextArea from '../components/FormTextArea';
 import FormSelectGroup from '../components/FormSelectGroup';
+import PubSub from '../PubSub/PubSub';
 
 export default class CenterPane extends React.Component {
 
@@ -38,6 +39,7 @@ export default class CenterPane extends React.Component {
             }
 
         };
+        PubSub.subscribe('updateCanvasComponent', this.updateSelectedComponentData.bind(this))
         this.getComponentData = this.getComponentData.bind(this);
     }
 
@@ -45,11 +47,22 @@ export default class CenterPane extends React.Component {
         console.log('click received in center pane',componentData);
         this.props.getCurrentSelectedComponentData(componentData);
     }
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('triggered')
 
-        return true;
+    updateSelectedComponentData(updatedData){
+        console.log('updated value in canvas', updatedData)
+        var currentChildren = this.state.kids;
+        for(var i=0; i<currentChildren.length; i++){
+            if(updatedData.id == currentChildren[i].id){
+                currentChildren[i].data = {
+                    elementData:updatedData.elementData,
+                    label:updatedData.label
+                };
+                break;
+            }
+        }
+        this.setState({kids:currentChildren});
     }
+
     render() {
         const canvasKids = [];
 
@@ -67,8 +80,8 @@ export default class CenterPane extends React.Component {
         for (var i = 0; i < this.state.numKids; i++) {
             let kid = this.state.kids[i];
             let CanvasComp = components[kid.type];
-            console.log(kid)
-            canvasKids.push(<CanvasComp key={i} id={kid.id} getComponentData = { this.getComponentData }/>);
+            //console.log(kid)
+            canvasKids.push(<CanvasComp key={i} id={kid.id} dataForGeneratingElements={kid.data} getComponentData = { this.getComponentData }/>);
         };
 
         return (
@@ -96,9 +109,9 @@ export default class CenterPane extends React.Component {
         const newCountMap = Object.assign({}, compCountMap, {
             [compToBeAdded] : compCountMap[compToBeAdded] + 1
         })
-
+        var data;
         const compId = compToBeAdded ? compToBeAdded.toString() + this.state.compCountMap[compToBeAdded] : '1';
-        const newKid = {'type': compToBeAdded,  'id': compId};
+        const newKid = {'type': compToBeAdded,  'id': compId, 'data':data};
         const newKidArray = [...this.state.kids, newKid]
 
         this.setState({
