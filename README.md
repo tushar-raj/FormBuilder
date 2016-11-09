@@ -38,7 +38,7 @@ Start the development server with this command:
 npm start
 ```
 
-You can see your app running on http://localhost:3000/
+You can see the app running on http://localhost:3000/
 
 
 Credits
@@ -68,3 +68,15 @@ The app has a fractal folder structure with separate folders containing containe
 The CSS is also made modular with the help of webpack loaders `style-loader` and `css-loader`.
 
 `src\routes\app\AppContainer.js` houses the actual app. It is the `DragDropContext` required by react-DnD.
+
+React-DnD specifies a `dragSource` and a `dropTarget`. These have `spec`s, which are a collection of functions called on specific times during the drag-drop. These functions take their respective component's react props and react-DnD's `monitor` object, among other things, as parameters.
+
+The `beginDrag` function can return a custom object. This object can be accessed by the source's `endDrag` function and the target's `drop` function using `monitor.getItem()`. Similarly, `monitor.getItemType()` returns the unique `type` of the item being dragged. These `type`s are specified in `src\constants\itemTypes.js`.
+
+
+Notes
+---
+
+- We're using the github's Atom as our IDE. To work with flow in Atom, please install the `linter-flow` and `linter` packages.
+
+- Since react-DnD seems to have some dependencies on older versions of other packages, we might need to resort to [npm shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap)
