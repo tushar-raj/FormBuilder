@@ -21,7 +21,7 @@ class FormRadioGroup extends React.Component {
     }
 
     render() {
-
+        let elementId = this.props.id;
         let elementDataObj = this.props.dataForGeneratingElements;
         if(typeof elementDataObj == 'undefined'){
             elementDataObj = {
@@ -42,7 +42,7 @@ class FormRadioGroup extends React.Component {
         }
 
         const listOfItems = elementDataObj.elementData.map((item,index) =>
-            <FormRadioButton key = { index } labelName = { item.labelName } />
+            <FormRadioButton name={elementId} key = { index } labelName = { item.labelName } />
         );
 
         return (

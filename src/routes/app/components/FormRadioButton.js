@@ -2,9 +2,13 @@ import React from 'react';
 import { Radio } from 'react-bootstrap';
 
 class FormRadioButton extends React.Component{
+	constructor(props){
+		super(props);
+	}
+
 	render() {
 	    return(
-			<Radio value = { this.props.labelName }>
+			<Radio name={this.props.name} value = { this.props.labelName }>
 		      {this.props.labelName}
 		    </Radio>
 	    );
