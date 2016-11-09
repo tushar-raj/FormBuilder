@@ -27,9 +27,14 @@ export default class LeftPane extends React.Component {
         let onSelectYellow = () => {
             themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-amber.css");
         }
-
+        let onSelectBrown = () => {
+            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-brown.css");
+        }
+        let onSelectPink = () => {
+            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-pink.css");
+        }
         let onSelectDefault = () => {
-            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-deep-orange.css");
+            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-blue-grey.css");
         }
 
         return (
@@ -42,8 +47,10 @@ export default class LeftPane extends React.Component {
                     <MenuItem eventKey="2" onSelect={onSelectBlue}>Blue</MenuItem>
                     <MenuItem eventKey="3" onSelect={onSelectGreen}>Green</MenuItem>
                     <MenuItem eventKey="3" onSelect={onSelectYellow}>Yellow</MenuItem>
+                    <MenuItem eventKey="4" onSelect={onSelectBrown}>Brown</MenuItem>
+                    <MenuItem eventKey="5" onSelect={onSelectPink}>Pink</MenuItem>
                     <MenuItem divider />
-                    <MenuItem eventKey="4" onSelect={onSelectDefault}>Default</MenuItem>
+                    <MenuItem eventKey="6" onSelect={onSelectDefault}>Default</MenuItem>
                 </DropdownButton>
                 </div>
             </PageHeader>
