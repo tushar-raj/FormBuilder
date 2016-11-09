@@ -5,6 +5,8 @@ import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash.flow';
 
+import styles from '../styles/canvas.css'
+
 import ItemTypes from '../../../constants/itemTypes';
 
 
@@ -80,15 +82,25 @@ function collectTarget(connect, monitor) {
 
 class CanvasCompWrapper extends React.Component {
 
+    state: {
+        isActive: boolean,
+    }
+
     constructor(props: any) {
         super(props);
+        this.state = {
+            isActive: false,
+        }
     }
 
     render() {
         const { connectDragSource, isDragging, hovered } = this.props;
         const { connectDropTarget, isOver, droppedItemType } = this.props;
         return connectDragSource(connectDropTarget(
-            <div className = 'canvasCompWrapper'>
+            <div
+                className = {styles.canvasCompWrapper +  ' w3-theme-l4'}
+                onClick = {this.props.onActivation}
+            >
                 {this.props.children}
             </div>
         ));
@@ -96,6 +108,6 @@ class CanvasCompWrapper extends React.Component {
 }
 
 export default flow(
-  DragSource(ItemTypes.CANVASCOMPONENT, ccSource, collectSource),
-  DropTarget(ItemTypes.CANVASCOMPONENT, ccTarget, collectTarget)
+    DragSource(ItemTypes.CANVASCOMPONENT, ccSource, collectSource),
+    DropTarget(ItemTypes.CANVASCOMPONENT, ccTarget, collectTarget)
 )(CanvasCompWrapper)

@@ -24,7 +24,7 @@ class FormDropdownButton extends React.Component{
 					<FormMenuItem key = { index } eventKey = {index.toString()} labelName = { item.labelName } name = {item.name} divider ={item.divider} />
       );
       return(
-        <div>
+        <div className='formComponent'>
           <h3>{this.props.groupLabelName || CheckboxGroup.defaultProps.groupLabelName}</h3>
 					<DropdownButton title= 'test1' id={`dropdown-basic`}>
   	      {listOfItems}
