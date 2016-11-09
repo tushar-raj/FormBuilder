@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { DragSource } from 'react-dnd';
-import { Button } from 'react-bootstrap';
 import { ComponentLabel } from './ComponentLabel';
 import { Row, Col } from 'react-bootstrap';
 
@@ -11,7 +10,6 @@ import ItemTypes from '../../../constants/itemTypes';
 //react-DnD spec: can contain 'beginDrag', 'endDrag', 'canDrag' and 'isDragging' methods
 const lpiSource = {
     beginDrag(props) {
-        console.log('beginDrag')
         return {'name': props.name};
     },
 

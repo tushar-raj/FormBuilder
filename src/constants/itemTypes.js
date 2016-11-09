@@ -1,3 +1,4 @@
 export default {
-  LEFTPANEITEM: 'LeftPaneItem'
+  LEFTPANEITEM: 'LeftPaneItem',
+  CANVASCOMPONENT: 'CanvasComponent',
 };

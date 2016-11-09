@@ -14,7 +14,7 @@ const canvasTarget = {
     drop(props, monitor, component) {
         const draggedItemSignature = monitor.getItem();
         props.addChild(draggedItemSignature);
-        return {'fromDrop': 123}
+        return {}
     }
 };
 
@@ -35,7 +35,6 @@ class Canvas extends React.Component {
 
     render() {
         const {connectDropTarget, isOver, droppedItemType } = this.props;
-        // console.log(this.props)
         return connectDropTarget(
             <div className='w3-border-theme'
                 className = {styles.canvas}
