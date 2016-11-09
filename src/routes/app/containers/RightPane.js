@@ -12,7 +12,7 @@ export default class RightPane extends React.Component {
 
         this.state = {
           componentToEdit:{},
-        }       
+        }
 
         PubSub.subscribe('fillRightPaneWithData', this.updateStateData.bind(this))
         this.editableItems = [];
@@ -33,21 +33,23 @@ export default class RightPane extends React.Component {
       this.props.changeListOfEditableElements(currentList);
     }
 
-    onUpdateValue(updatedValue, type){
+    onUpdateValue(updatedValue, type, itemIndex){
         console.log('updatedValue', updatedValue, 'type', type)
         let currentList = this.state.componentToEdit;
         if(type == 'questionLabel'){
             currentList.label = updatedValue;
         } else {
-
+            currentList.elementData[itemIndex].labelName = updatedValue;
         }
-        this.props.receiveUpdatedData(currentList)
+        this.props.receiveUpdatedData(currentList);
     }
 
     addElement(){
       let currentList = this.state.componentToEdit;
       currentList.elementData.push({labelName:'Default Value'});
-      this.props.changeListOfEditableElements(currentList);
+      //this.props.changeListOfEditableElements(currentList);
+      this.props.receiveUpdatedData(currentList);
+      this.updateStateData(currentList)
     }
 
     render() {

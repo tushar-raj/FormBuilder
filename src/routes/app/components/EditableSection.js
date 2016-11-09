@@ -12,7 +12,7 @@ class EditableSection extends React.Component{
       this.props.deleteItem(this.props.itemIndex);
     }
     updatedValue(currentValue, type){
-        this.props.updatedValue(currentValue, type);
+        this.props.updatedValue(currentValue, type, this.props.itemIndex);
     }
     render() {
         return(
