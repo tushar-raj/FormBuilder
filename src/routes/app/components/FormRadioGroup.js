@@ -29,7 +29,7 @@ class FormRadioGroup extends React.Component {
                     {labelName:'Default Value 1'},
                     {labelName:'Default Value 2'}
                 ],
-                label:'Default Radio Label'
+                label:'Default Radio Group Label'
             }
 
         }

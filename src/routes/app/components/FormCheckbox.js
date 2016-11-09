@@ -4,7 +4,7 @@ import { Checkbox } from 'react-bootstrap';
 class FormCheckbox extends React.Component{
 	render() {
 	    return(
-			<Checkbox value = { this.props.labelName }>
+			<Checkbox name={this.props.name} value = { this.props.labelName }>
 		        {this.props.labelName}
 	        </Checkbox>
 	    );
