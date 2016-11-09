@@ -16,6 +16,7 @@ class EditableSection extends React.Component{
         }
     }
     moveElementDown(){
+        if(this.props.itemIndex < this.props.itemsLength-1){
             this.props.moveElementDown(this.props.itemIndex);
         }
     }
