@@ -27,14 +27,12 @@ export default class RightPane extends React.Component {
 
     onDeleteElement(itemIndex){
       let currentList = this.state.componentToEdit;
-      var deletedItem = currentList.elementData.splice(itemIndex,1);
-      console.log('currentList',currentList)
-      console.log('deletedItem',deletedItem)
-      this.props.changeListOfEditableElements(currentList);
+      currentList.elementData.splice(itemIndex,1);
+      this.props.receiveUpdatedData(currentList);
+      this.updateStateData(currentList);
     }
 
     onUpdateValue(updatedValue, type, itemIndex){
-        console.log('updatedValue', updatedValue, 'type', type)
         let currentList = this.state.componentToEdit;
         if(type == 'questionLabel'){
             currentList.label = updatedValue;
@@ -47,9 +45,8 @@ export default class RightPane extends React.Component {
     addElement(){
       let currentList = this.state.componentToEdit;
       currentList.elementData.push({labelName:'Default Value'});
-      //this.props.changeListOfEditableElements(currentList);
       this.props.receiveUpdatedData(currentList);
-      this.updateStateData(currentList)
+      this.updateStateData(currentList);
     }
 
     render() {

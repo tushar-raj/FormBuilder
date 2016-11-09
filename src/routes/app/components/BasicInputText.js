@@ -10,13 +10,11 @@ class BasicInputText extends React.Component{
      this.handleChange = this.handleChange.bind(this);
    }
    handleChange(event){
-       console.log('current value', event.target.value, this.props.type)
        this.setState({value: event.target.value});
        this.props.updatedValue(event.target.value, this.props.type);
    }
    componentWillReceiveProps(nextProps) {
-       this.setState({value: nextProps.value});
-       console.log('nextProps', nextProps)
+       this.setState({value: nextProps.value});       
     }
    render() {
        return(
