@@ -16,7 +16,8 @@ class EditableSection extends React.Component{
         }
     }
     moveElementDown(){
-
+            this.props.moveElementDown(this.props.itemIndex);
+        }
     }
     deleteItem(){
       this.props.deleteItem(this.props.itemIndex);

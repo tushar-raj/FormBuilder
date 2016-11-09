@@ -22,17 +22,15 @@ class AppContainer extends React.Component {
             selectedComponentUpdatedData:{}
         }
 
-        this.onGetCurrentSelectedComponentData = this.onGetCurrentSelectedComponentData.bind(this);        
+        this.onGetCurrentSelectedComponentData = this.onGetCurrentSelectedComponentData.bind(this);
         this.onReceiveUpdatedData = this.onReceiveUpdatedData.bind(this);
     }
 
-    onGetCurrentSelectedComponentData(componentData){
-        console.log('componentData in appcontainer', componentData);
+    onGetCurrentSelectedComponentData(componentData){        
         PubSub.publish('fillRightPaneWithData', componentData);
     }
 
     onReceiveUpdatedData(updatedData){
-        console.log('updatedData', updatedData)
         PubSub.publish('updateCanvasComponent', updatedData);
     }
     render() {

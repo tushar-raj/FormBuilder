@@ -50,12 +50,10 @@ export default class CenterPane extends React.Component {
     }
 
     getComponentData(componentData: Object){
-        console.log('click received in center pane',componentData);
         this.props.getCurrentSelectedComponentData(componentData);
     }
 
     updateSelectedComponentData(updatedData: Object){
-        console.log('updated value in canvas', updatedData)
         var currentChildren = this.state.kids;
         for(var i=0; i<currentChildren.length; i++){
             if(updatedData.id == currentChildren[i].id){
@@ -86,7 +84,7 @@ export default class CenterPane extends React.Component {
         for (var i = 0; i < this.state.numKids; i++) {
             let kid = this.state.kids[i];
             let CanvasComp = components[kid.type];
-            //console.log(kid)
+            
             canvasKids.push(
                 //CanvasCompWrapper
                 <CanvasCompWrapper key={i} index={i} reorderComps= { this.reorderComps.bind(this) }>
