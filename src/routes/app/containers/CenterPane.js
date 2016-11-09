@@ -10,7 +10,7 @@ import FormRadioGroup from '../components/FormRadioGroup';
 import FormCheckboxGroup from '../components/FormCheckboxGroup';
 import FormDropdownButton from '../components/FormDropdownButton'
 import FormTextArea from '../components/FormTextArea';
-import FormSelectGroup from '../components/FormSelectGroup';
+import FormSelectBox from '../components/FormSelectBox';
 
 import CanvasCompWrapper from '../components/CanvasCompWrapper';
 
@@ -41,7 +41,7 @@ export default class CenterPane extends React.Component {
                 'FormRadioGroup': 0,
                 'FormCheckboxGroup':0,
                 'FormDropdownButton':0,
-                'FormSelectGroup':0,
+                'FormSelectBox':0,
             },
             activeKidId: '',
 
@@ -80,7 +80,7 @@ export default class CenterPane extends React.Component {
             'FormRadioGroup': FormRadioGroup,
             'FormCheckboxGroup':FormCheckboxGroup,
             'FormDropdownButton':FormDropdownButton,
-            'FormSelectGroup' : FormSelectGroup,
+            'FormSelectBox' : FormSelectBox,
         };
 
         for (var i = 0; i < this.state.numKids; i++) {

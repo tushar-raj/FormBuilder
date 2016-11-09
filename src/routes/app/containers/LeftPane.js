@@ -31,8 +31,8 @@ const leftPaneItemArray = [
         name: 'RadioButtonGroup',
     }, {
         imagePath: 'input_selectbox.png',
-        componentTitle: 'Dropdown',
-        name: 'DropdownButton',
+        componentTitle: 'SelectBox',
+        name: 'SelectBox',
     }, {
         imagePath: 'button_ok.png',
         componentTitle: 'Button',
