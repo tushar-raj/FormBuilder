@@ -19,6 +19,7 @@ export default class RightPane extends React.Component {
         this.addElement = this.addElement.bind(this);
         this.onDeleteElement = this.onDeleteElement.bind(this);
         this.onUpdateValue = this.onUpdateValue.bind(this);
+        this.onMoveElementUp = this.onMoveElementUp.bind(this);
     }
 
     updateStateData(data){
@@ -49,6 +50,15 @@ export default class RightPane extends React.Component {
       this.updateStateData(currentList);
     }
 
+    onMoveElementUp(itemIndex){        
+        let currentList = this.state.componentToEdit;
+        var temp = currentList.elementData[itemIndex];
+        currentList.elementData[itemIndex] = currentList.elementData[itemIndex - 1];
+        currentList.elementData[itemIndex - 1] = temp;
+        this.props.receiveUpdatedData(currentList);
+        this.updateStateData(currentList);
+    }
+
     render() {
         console.log('components data in right pane', this.state.componentToEdit);
         let componentToEdit = this.state.componentToEdit;
@@ -60,7 +70,7 @@ export default class RightPane extends React.Component {
            basicItems.push(<BasicInputText key={1} type="questionLabel" value={componentToEdit.label} updatedValue={this.onUpdateValue}/>);
            basicItems.push(<ControlLabel key={2}>Edit your options:</ControlLabel>);
            for(var i=0;i<componentToEdit.elementData.length;i++){
-             this.editableItems.push(<EditableSection type="optionsLabel" key={i} itemIndex={i} updatedValue={this.onUpdateValue} deleteItem={this.onDeleteElement} value={componentToEdit.elementData[i].labelName}/>);
+             this.editableItems.push(<EditableSection type="optionsLabel" key={i} itemIndex={i} moveElementUp={this.onMoveElementUp} updatedValue={this.onUpdateValue} deleteItem={this.onDeleteElement} value={componentToEdit.elementData[i].labelName}/>);
            }
 
            addBtn = <Button title='Add Element' onClick = { this.addElement }><div>+</div></Button>;

@@ -7,6 +7,16 @@ class EditableSection extends React.Component{
       super(props);
       this.deleteItem =  this.deleteItem.bind(this);
       this.updatedValue = this.updatedValue.bind(this);
+      this.moveElementUp = this.moveElementUp.bind(this);
+      this.moveElementDown = this.moveElementDown.bind(this);
+    }
+    moveElementUp(){
+        if(this.props.itemIndex > 0){
+            this.props.moveElementUp(this.props.itemIndex);
+        }
+    }
+    moveElementDown(){
+
     }
     deleteItem(){
       this.props.deleteItem(this.props.itemIndex);
@@ -18,8 +28,8 @@ class EditableSection extends React.Component{
         return(
           <div>
             <BasicInputText type={this.props.type} value={this.props.value} updatedValue={this.updatedValue} />
-            <Button><div className='arrowUp'></div></Button>
-            <Button><div className='arrowDown'></div></Button>
+            <Button onClick={this.moveElementUp}><div className='arrowUp'></div></Button>
+            <Button onClick={this.moveElementDown}><div className='arrowDown'></div></Button>
             <Button onClick={this.deleteItem}><div className='deleteEditableEl'>X</div></Button>
           </div>
         );
