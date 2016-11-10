@@ -12,29 +12,20 @@ export default class LeftPane extends React.Component {
     render() {
         const themeLink = document.getElementById("themeSheetLink");
 
-        let onSelectRed = () => {
-            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-red.css");
-        }
+        const themeKeyMap = {
+            'red': 'red',
+            'blue': 'cyan',
+            'green': 'light-green',
+            'yellow': 'amber',
+            'brown': 'brown',
+            'pink': 'pink',
+            'default': 'blue-grey',
+        };
 
-        let onSelectBlue = () => {
-            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-cyan.css");
-        }
-
-        let onSelectGreen = () => {
-            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-light-green.css");
-        }
-
-        let onSelectYellow = () => {
-            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-amber.css");
-        }
-        let onSelectBrown = () => {
-            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-brown.css");
-        }
-        let onSelectPink = () => {
-            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-pink.css");
-        }
-        let onSelectDefault = () => {
-            themeLink.setAttribute("href", "http://www.w3schools.com/lib/w3-theme-blue-grey.css");
+        let onSelectTheme = (eventKey: string) => {
+            const themeName = themeKeyMap[eventKey];
+            const themeSheetUrl = 'http://www.w3schools.com/lib/w3-theme-' + themeName + '.css';
+            themeLink.setAttribute('href', themeSheetUrl);
         }
 
         return (
@@ -43,18 +34,22 @@ export default class LeftPane extends React.Component {
 
                 <div className='themeButtonWrapper'>
                 <DropdownButton id='themeButton' className='w3-theme-d2' title='Themes' pullRight>
-                    <MenuItem eventKey="1" onSelect={onSelectRed}>Red</MenuItem>
-                    <MenuItem eventKey="2" onSelect={onSelectBlue}>Blue</MenuItem>
-                    <MenuItem eventKey="3" onSelect={onSelectGreen}>Green</MenuItem>
-                    <MenuItem eventKey="3" onSelect={onSelectYellow}>Yellow</MenuItem>
-                    <MenuItem eventKey="4" onSelect={onSelectBrown}>Brown</MenuItem>
-                    <MenuItem eventKey="5" onSelect={onSelectPink}>Pink</MenuItem>
+                    <MenuItem eventKey="red" onSelect={onSelectTheme} > Red </MenuItem>
+                    <MenuItem eventKey="blue" onSelect={onSelectTheme} > Blue </MenuItem>
+                    <MenuItem eventKey="green" onSelect={onSelectTheme} > Green </MenuItem>
+                    <MenuItem eventKey="yellow" onSelect={onSelectTheme} > Yellow </MenuItem>
+                    <MenuItem eventKey="brown" onSelect={onSelectTheme} > Brown </MenuItem>
+                    <MenuItem eventKey="pink" onSelect={onSelectTheme} > Pink </MenuItem>
                     <MenuItem divider />
-                    <MenuItem eventKey="6" onSelect={onSelectDefault}>Default</MenuItem>
+                    <MenuItem eventKey="default" onSelect={onSelectTheme}>Default</MenuItem>
                 </DropdownButton>
                 </div>
             </PageHeader>
 
         );
+    }
+
+    onSelectTheme(){
+
     }
 }
