@@ -26,7 +26,6 @@ export default class CenterPane extends React.Component {
         numKids: number,
         kids: Object[],
         compCountMap: Object,
-        activeKidId: string,
     }
 
     constructor(props: any) {
@@ -43,7 +42,6 @@ export default class CenterPane extends React.Component {
                 'FormDropdownButton':0,
                 'FormSelectGroup':0,
             },
-            activeKidId: '',
 
 
         };
@@ -86,16 +84,10 @@ export default class CenterPane extends React.Component {
         for (var i = 0; i < this.state.numKids; i++) {
             let kid = this.state.kids[i];
             let CanvasComp = components[kid.type];
-            var wrapId = kid.id + '_wrapper'
 
             canvasKids.push(
-                <CanvasCompWrapper
-                    key={i}
-                    index={i}
-                    id = { wrapId }
-                    reorderComps = { this.reorderComps.bind(this) }
-                    onActivation = {this.activate.bind(this, wrapId) }
-                >
+                //CanvasCompWrapper
+                <CanvasCompWrapper key={i} index={i} reorderComps= { this.reorderComps.bind(this) }>
                     <CanvasComp
                         key={i}
                         id={kid.id}
@@ -119,12 +111,6 @@ export default class CenterPane extends React.Component {
                 </Canvas>
             </div>
         );
-    }
-
-    activate(kidId: string){
-        this.setState({
-            activeKidId: kidId,
-        });
     }
 
     reorderComps(dragIndex: number, hoverIndex: number){
@@ -154,7 +140,7 @@ export default class CenterPane extends React.Component {
             [compToBeAdded] : compCountMap[compToBeAdded] + 1
         })
         var data;
-        const compId = compToBeAdded ? compToBeAdded.toString() + '_' + this.state.compCountMap[compToBeAdded] : '1';
+        const compId = compToBeAdded ? compToBeAdded.toString() + this.state.compCountMap[compToBeAdded] : '1';
         const newKid = {'type': compToBeAdded,  'id': compId, 'data':data};
         const newKidArray = [...this.state.kids, newKid]
 
