@@ -31,11 +31,24 @@ export default class RightPane extends React.Component {
         this.radioChangeHandlerForButtonOptions = this.radioChangeHandlerForButtonOptions.bind(this);
         this.onUpdateTextAreaProps = this.onUpdateTextAreaProps.bind(this);
         this.changeHandlerForInputPatternOptions = this.changeHandlerForInputPatternOptions.bind(this);
+        this.onUpdateCustomPattern = this.onUpdateCustomPattern.bind(this);
     }
 
-    changeHandlerForInputPatternOptions(value){
+    onUpdateCustomPattern(updatedValue){
+        let currentList = this.state.componentToEdit;
+        currentList.elementData[0].pattern = updatedValue;
+        this.props.receiveUpdatedData(currentList);
+        this.updateStateData(currentList);
+    }
+
+    changeHandlerForInputPatternOptions(value,name,labelName){
         let currentList = this.state.componentToEdit;
         currentList.elementData[0].pattern = value;
+        if(labelName == 'Custom'){
+            currentList.elementData[0].type = 'custom';
+        } else {
+            currentList.elementData[0].type = 'predefined';
+        }
         this.props.receiveUpdatedData(currentList);
         this.updateStateData(currentList);
     }
@@ -260,13 +273,19 @@ export default class RightPane extends React.Component {
 
             case 'FormTextbox':
                 let patterns = [
-                    {key: 'Default', value:regexPatterns.defaultPattern},
-                    {key: 'Email', value:regexPatterns.email},
-                    {key: 'Alphabet', value:regexPatterns.alphabet},
-                    {key: 'AlphaNumeric', value:regexPatterns.alphaNumeric},
-                    {key: 'Numeric', value:regexPatterns.numeric},
-                    {key: 'Custom', value:''},
+                    {key: 'Default', type:'predefined', value:regexPatterns.defaultPattern},
+                    {key: 'Email', type:'predefined', value:regexPatterns.email},
+                    {key: 'Alphabet', type:'predefined', value:regexPatterns.alphabet},
+                    {key: 'AlphaNumeric', type:'predefined', value:regexPatterns.alphaNumeric},
+                    {key: 'Numeric', type:'predefined', value:regexPatterns.numeric}
                 ];
+
+                if(componentToEdit.elementData[0].type == 'custom'){
+                    patterns.push({key: 'Custom', type:'custom', value:componentToEdit.elementData[0].pattern});
+                } else {
+                    patterns.push({key: 'Custom', type:'custom', value:''});
+                }
+
                 let patternOptions = patterns.map((item,index) => {
                     if(item.value == componentToEdit.elementData[0].pattern){
                         return <BasicRadioButton checked="checked" name="patterns" updatedValue={this.changeHandlerForInputPatternOptions} key={index} value={item.value} labelName={item.key} />
@@ -275,6 +294,22 @@ export default class RightPane extends React.Component {
                     }
                   }
                 );
+                let customPatternInputBox;
+                console.log('type', componentToEdit.elementData[0].type)
+                if(componentToEdit.elementData[0].type == 'custom'){
+                    customPatternInputBox = <div>
+                                                <ControlLabel>
+                                                    Enter your custom pattern:
+                                                </ControlLabel>
+                                                <BasicInputText
+                                                    type="questionLabel"
+                                                    value={componentToEdit.elementData[0].pattern}
+                                                    updatedValue={this.onUpdateCustomPattern}
+                                                />
+                                            </div>
+                } else {
+                    customPatternInputBox = '';
+                }
                 itemsToDisplay = <div>
                     <ControlLabel>Enter your question here:</ControlLabel>
                     <BasicInputText type="questionLabel" value={componentToEdit.label} updatedValue={this.onUpdateTextAreaProps}/>
@@ -282,6 +317,7 @@ export default class RightPane extends React.Component {
                     <BasicInputText type="maxLengthLabel" value={componentToEdit.elementData[1].maxLength} updatedValue={this.onUpdateTextAreaProps}/>
                     <ControlLabel>Select Pattern:</ControlLabel>
                     {patternOptions}
+                    {customPatternInputBox}
                 </div>;
                 break;
 

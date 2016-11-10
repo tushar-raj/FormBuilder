@@ -11,7 +11,7 @@ class BasicRadioButton extends React.Component{
    }
    handleChange(event){
        this.setState({value: event.target.value});
-       this.props.updatedValue(event.target.value, this.props.name);
+       this.props.updatedValue(event.target.value, this.props.name, this.props.labelName);
    }
    componentWillReceiveProps(nextProps) {
        this.setState({value: nextProps.value});
