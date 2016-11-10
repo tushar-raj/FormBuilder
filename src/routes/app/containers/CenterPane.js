@@ -56,8 +56,8 @@ export default class CenterPane extends React.Component {
     }
 
     updateSelectedComponentData(updatedData: Object){
-        var currentChildren = this.state.kids;
-        for(var i=0; i<currentChildren.length; i++){
+        const currentChildren: Object[] = this.state.kids;
+        for(let i=0, l = currentChildren.length; i<l;  i++){
             if(updatedData.id == currentChildren[i].id){
                 currentChildren[i].data = {
                     elementData:updatedData.elementData,
@@ -66,7 +66,7 @@ export default class CenterPane extends React.Component {
                 break;
             }
         }
-        this.setState({kids:currentChildren});
+        this.setState({kids: currentChildren});
     }
 
     render() {
@@ -83,17 +83,17 @@ export default class CenterPane extends React.Component {
             'FormSelectBox' : FormSelectBox,
         };
 
-        for (var i = 0; i < this.state.numKids; i++) {
-            let kid = this.state.kids[i];
-            let CanvasComp = components[kid.type];
+        for (let i=0, l = this.state.numKids; i<l; i++) {
+            let kid: Object = this.state.kids[i];
+            let CanvasComp: Function = components[kid.type];
 
             canvasKids.push(
                 //CanvasCompWrapper
                 <CanvasCompWrapper key={i} index={i} reorderComps= { this.reorderComps.bind(this) }>
                     <CanvasComp
-                        key={i}
-                        id={kid.id}
-                        dataForGeneratingElements={kid.data}
+                        key = {i}
+                        id = {kid.id}
+                        dataForGeneratingElements = {kid.data}
                         getComponentData = { this.getComponentData }
                     />
                 </CanvasCompWrapper>

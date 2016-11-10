@@ -18,7 +18,7 @@ export default class LeftPane extends React.Component {
             'default': 'blue-grey',
         };
 
-        let onSelectTheme: Function = (eventKey: string) => {
+        const onSelectTheme: Function = (eventKey: string) => {
             const themeName = themeKeyMap[eventKey];
             const themeSheetUrl = 'http://www.w3schools.com/lib/w3-theme-' + themeName + '.css';
             themeLink.setAttribute('href', themeSheetUrl);

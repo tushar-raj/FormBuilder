@@ -40,7 +40,6 @@ class LeftPaneItem extends React.Component {
 
     render() {
         const { connectDragSource, isDragging, hovered } = this.props;
-        var i = 'input_textbox.png';
         return connectDragSource(
             <div className='leftpaneitem w3-theme-action'>
                 <img
