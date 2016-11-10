@@ -9,11 +9,37 @@ class FormButton extends React.Component {
 
     constructor(props: any) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        this.props.getComponentData(this.currentItems);
     }
 
     render() {
+        let elementId = this.props.id;
+        let elementDataObj = this.props.dataForGeneratingElements;
+        if(typeof elementDataObj == 'undefined'){
+            elementDataObj = {
+                elementData:[
+                    {style:'default'},
+                    {size:'large'}
+                ],
+                label:'Default Button'
+            }
+
+        }
+
+        this.currentItems = {
+          id:this.props.id,
+          component:'FormButton',
+          elementData:elementDataObj.elementData,
+          label:elementDataObj.label
+        }
         return (
-            <div className='formComponent'><Button>{this.props.id}</Button></div>
+            <div className='formComponent' onClick={this.handleClick}>
+                <Button bsStyle={elementDataObj.elementData[0].style} bsSize={elementDataObj.elementData[1].size}>{elementDataObj.label}</Button>
+            </div>
         );
     }
 }
