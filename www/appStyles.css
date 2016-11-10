@@ -2,56 +2,11 @@
     /*background-color: azure;*/
 }
 
-#mainGrid {
-    /*background-color: white;*/
-    width: 98%;
-}
-
-.mainColumns {
-    border: 1px solid lightslategrey;
-    height: 100%;
-    padding: 10px;
-}
-
 #canvasWrapper {
     height: 100%;
     position: relative;
 }
 
-/*#canvas {
-    width: 90%;
-    height: 70%;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid;
-    border-radius: 10px;
-    box-shadow: 3px 3px 20px gray;
-}*/
-
-#leftPaneColumn{
-    border-right: 0px;
-    /*background-color: lightsteelblue;*/
-}
-
-#centerPaneColumn{
-    /*background-color: ghostwhite;*/
-}
-
-#rightPaneColumn{
-    border-left: 0px;
-    /*background-color: lightsteelblue;*/
-}
-
-.mainGridRow{
-    background-color: white;
-}
-
-#leftPane{
-
-}
 
 .leftpaneitem{
     display: flex;
@@ -83,12 +38,11 @@
     margin: 5px;
 }
 
-
 .themeButtonWrapper{
     float: right;
 }
 
-.arrowUp {
+/*.arrowUp {
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
@@ -104,4 +58,4 @@
 }
 .deleteEditableEl{
     color:red;
-}
+}*/

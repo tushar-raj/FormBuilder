@@ -14,19 +14,29 @@ import TopPane from './containers/TopPane';
 
 import PubSub from './PubSub/PubSub'
 
+import styles from './styles/appContainer.css'
+
 class AppContainer extends React.Component {
+
+    state: {
+        currentSelectedComponentData: Object,
+        selectedComponentUpdatedData: Object,
+    }
+
     constructor(props){
         super(props);
         this.state = {
             currentSelectedComponentData:{},
-            selectedComponentUpdatedData:{}
+            selectedComponentUpdatedData:{},
         }
 
-        this.onGetCurrentSelectedComponentData = this.onGetCurrentSelectedComponentData.bind(this);
-        this.onReceiveUpdatedData = this.onReceiveUpdatedData.bind(this);
+        const self: any = this;
+
+        self.onGetCurrentSelectedComponentData = this.onGetCurrentSelectedComponentData.bind(this);
+        self.onReceiveUpdatedData = this.onReceiveUpdatedData.bind(this);
     }
 
-    onGetCurrentSelectedComponentData(componentData){        
+    onGetCurrentSelectedComponentData(componentData){
         PubSub.publish('fillRightPaneWithData', componentData);
     }
 
@@ -35,18 +45,36 @@ class AppContainer extends React.Component {
     }
     render() {
         return (
-            <Grid id='mainGrid' className=''>
-                <Row className='mainGridRow'>
-                    <Col md={12}><TopPane /></Col>
+            <Grid id = 'mainGrid' className = {styles.mainGrid}>
+                <Row className = {styles.mainGridRow}>
+                    <Col md={12}>
+                        <TopPane />
+                    </Col>
                 </Row>
+
                 <Row>
-                    <Col md={2} sm={2} xs={2} id='leftPaneColumn' className='mainColumns w3-theme-l2'><LeftPane/></Col>
-                    <Col md={7} sm={7} xs={7} id='centerPaneColumn' className='mainColumns w3-theme-l4'>
+
+                    <Col md={2} sm={2} xs={2}
+                        id = 'leftPaneColumn'
+                        className = {styles.mainColumns + ' ' + styles.leftPaneColumn + ' w3-theme-l2'}
+                    >
+                        <LeftPane/>
+                    </Col>
+
+                    <Col md={7} sm={7} xs={7}
+                        id='centerPaneColumn'
+                        className = {styles.mainColumns + ' ' + styles.centerPaneColumn + ' w3-theme-l4'}
+                    >
                         <CenterPane getCurrentSelectedComponentData = { this.onGetCurrentSelectedComponentData }/>
                     </Col>
-                    <Col md={3} sm={3} xs={3} id='rightPaneColumn' className='mainColumns w3-theme-l2'>
+
+                    <Col md={3} sm={3} xs={3}
+                        id='rightPaneColumn'
+                        className = {styles.mainColumns + ' ' + styles.rightPaneColumn + ' w3-theme-l2'}
+                    >
                         <RightPane receiveUpdatedData={this.onReceiveUpdatedData} />
                     </Col>
+
                 </Row>
             </Grid>
         );

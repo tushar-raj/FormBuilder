@@ -18,7 +18,7 @@ export default class RightPane extends React.Component {
         super(props);
 
         this.state = {
-          componentToEdit: {},
+            componentToEdit: {},
         }
 
         PubSub.subscribe('fillRightPaneWithData', this.updateStateData.bind(this))

@@ -1,0 +1,28 @@
+.mainGrid {
+    /*background-color: white;*/
+    width: 98%;
+}
+
+.mainGridRow{
+    background-color: white;
+}
+
+.mainColumns {
+    border: 1px solid lightslategrey;
+    height: 100%;
+    padding: 10px;
+}
+
+.leftPaneColumn{
+    border-right: 0px;
+    /*background-color: lightsteelblue;*/
+}
+
+.centerPaneColumn{
+    /*background-color: ghostwhite;*/
+}
+
+.rightPaneColumn{
+    border-left: 0px;
+    /*background-color: lightsteelblue;*/
+}
