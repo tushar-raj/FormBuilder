@@ -23,6 +23,19 @@ export default class RightPane extends React.Component {
         this.onMoveElementUp = this.onMoveElementUp.bind(this);
         this.onMoveElementDown = this.onMoveElementDown.bind(this);
         this.radioChangeHandlerForButtonOptions = this.radioChangeHandlerForButtonOptions.bind(this);
+        this.onUpdateTextAreaProps = this.onUpdateTextAreaProps.bind(this);
+    }
+
+    onUpdateTextAreaProps(updatedValue, type){
+        let currentList = this.state.componentToEdit;
+        if(type == 'questionLabel'){
+            currentList.label = updatedValue;
+        } else if(type == 'rowsLabel') {
+            currentList.elementData[0].rows = updatedValue;
+        } else {
+            currentList.elementData[1].maxLength = updatedValue;
+        }
+        this.props.receiveUpdatedData(currentList);
     }
 
     radioChangeHandlerForButtonOptions(value, name){
@@ -136,7 +149,17 @@ export default class RightPane extends React.Component {
                                   <ControlLabel>Select Button Size:</ControlLabel>
                                   {sizeOptions}
                                 </div>;
-         }
+                break;
+            case 'FormTextArea':
+                itemsToDisplay = <div>
+                                  <ControlLabel>Enter your question here:</ControlLabel>
+                                  <BasicInputText type="questionLabel" value={componentToEdit.label} updatedValue={this.onUpdateTextAreaProps}/>
+                                  <ControlLabel>Enter Number of Maximum Characters:</ControlLabel>
+                                  <BasicInputText type="maxLengthLabel" value={componentToEdit.elementData[1].maxLength} updatedValue={this.onUpdateTextAreaProps}/>
+                                  <ControlLabel>Enter Number of Rows:</ControlLabel>
+                                  <BasicInputText type="rowsLabel" value={componentToEdit.elementData[0].rows} updatedValue={this.onUpdateTextAreaProps}/>
+                                </div>;
+        }
 
         return (
             <Panel>
