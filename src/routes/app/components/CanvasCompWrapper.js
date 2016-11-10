@@ -10,7 +10,7 @@ import styles from '../styles/canvas.css'
 import ItemTypes from '../../../constants/itemTypes';
 
 
-const ccSource = {
+const ccSource: Object = {
     beginDrag(props) {
         return {'index': props.index};
     },
@@ -24,31 +24,31 @@ function collectSource(connect, monitor) {
     return {
         connectDragSource: connect.dragSource(),
         isDragging: monitor.isDragging(),
-        hovered: monitor.getItemType(),
+        hoveredItemType: monitor.getItemType(),
     }
 }
 
-const ccTarget = {
+const ccTarget: Object = {
     // drop(props, monitor, component) {
     //
     //     return {}
     // },
 
     drop(props, monitor, component) {
-        const dragIndex = monitor.getItem().index;
-        const hoverIndex = props.index;
+        const dragIndex: number = monitor.getItem().index;
+        const hoverIndex: number = props.index;
 
         // Determine rectangle on screen
-        const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
+        const hoverBoundingRect: Object = findDOMNode(component).getBoundingClientRect();
 
         // Get vertical middle
-        const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+        const hoverMiddleY: number = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
 
         // Determine mouse position
-        const clientOffset = monitor.getClientOffset();
+        const clientOffset: Object = monitor.getClientOffset();
 
         // Get pixels to the top
-        const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+        const hoverClientY: number = clientOffset.y - hoverBoundingRect.top;
 
         // Only perform the move when the mouse has crossed half of the items height
         // When dragging downwards, only move when the cursor is below 50%
@@ -94,7 +94,7 @@ class CanvasCompWrapper extends React.Component {
     }
 
     render() {
-        const { connectDragSource, isDragging, hovered } = this.props;
+        const { connectDragSource, isDragging, hoveredItemType } = this.props;
         const { connectDropTarget, isOver, droppedItemType } = this.props;
         return connectDragSource(connectDropTarget(
             <div

@@ -10,9 +10,9 @@ import CustomDiv from './CustomDiv';
 import styles from '../styles/canvas.css'
 
 //react-DnD spec: can contain 'drop', 'hover' and 'canDrop' methods
-const canvasTarget = {
+const canvasTarget: Object = {
     drop(props, monitor, component) {
-        const draggedItemSignature = monitor.getItem();
+        const draggedItemSignature: Object = monitor.getItem();
         props.addChild(draggedItemSignature);
         return {}
     }
@@ -29,18 +29,17 @@ function collect(connect, monitor) {
 
 class Canvas extends React.Component {
 
-    constructor(props: any) {
+    constructor(props: Object) {
         super(props);
     }
 
     render() {
-        const {connectDropTarget, isOver, droppedItemType } = this.props;
+        const {connectDropTarget, isOver: boolean, droppedItemType: string } = this.props;
         return connectDropTarget(
             <div
                 className = {styles.canvas + ' w3-border-theme'}
             >
-
-            {this.props.children}
+                {this.props.children}
 
             </div>
         );

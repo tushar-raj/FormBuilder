@@ -4,15 +4,10 @@ import React from 'react';
 
 import LeftPaneItem from '../components/LeftPaneItem';
 import ItemTypes from '../../../constants/itemTypes';
-// import textboxImg from '../assets/input_textbox.png'
-
-const basicImagePath = '../assets/';
-
-// const basicImagePath = '/';
 
 /*This needs to be moved elsewhere */
 
-const leftPaneItemArray = [
+const leftPaneItemArray: Object[] = [
     {
         imagePath: 'input_textbox.png',
         componentTitle: 'Textbox',
@@ -40,7 +35,7 @@ const leftPaneItemArray = [
     }
 ];
 
-const leftPaneItems = leftPaneItemArray.map(
+const leftPaneItems: Object[] = leftPaneItemArray.map(
     (item, index) =>
         <LeftPaneItem
             key = { index }
@@ -49,6 +44,7 @@ const leftPaneItems = leftPaneItemArray.map(
             name = { item.name }
         />
     );
+    
 export default class LeftPane extends React.Component {
 
     render() {

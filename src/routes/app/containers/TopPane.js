@@ -3,16 +3,12 @@
 import React from 'react';
 import { PageHeader, DropdownButton, MenuItem } from 'react-bootstrap';
 
-
-
 export default class LeftPane extends React.Component {
 
-
-
     render() {
-        const themeLink = document.getElementById("themeSheetLink");
+        const themeLink: HTMLElement = document.getElementById("themeSheetLink");
 
-        const themeKeyMap = {
+        const themeKeyMap: Object = {
             'red': 'red',
             'blue': 'cyan',
             'green': 'light-green',
@@ -22,7 +18,7 @@ export default class LeftPane extends React.Component {
             'default': 'blue-grey',
         };
 
-        let onSelectTheme = (eventKey: string) => {
+        let onSelectTheme: Function = (eventKey: string) => {
             const themeName = themeKeyMap[eventKey];
             const themeSheetUrl = 'http://www.w3schools.com/lib/w3-theme-' + themeName + '.css';
             themeLink.setAttribute('href', themeSheetUrl);

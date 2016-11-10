@@ -46,7 +46,9 @@ export default class CenterPane extends React.Component {
 
         };
         PubSub.subscribe('updateCanvasComponent', this.updateSelectedComponentData.bind(this))
-        this.getComponentData = this.getComponentData.bind(this);
+
+        const self: any = this;
+        self.getComponentData = this.getComponentData.bind(this);
     }
 
     getComponentData(componentData: Object){
@@ -68,7 +70,7 @@ export default class CenterPane extends React.Component {
     }
 
     render() {
-        const canvasKids = [];
+        const canvasKids: Object[] = [];
 
         //this map is needed for JSX syntax. Dynamic naming of comps needs function names.
         const components = {
@@ -114,35 +116,31 @@ export default class CenterPane extends React.Component {
     }
 
     reorderComps(dragIndex: number, hoverIndex: number){
-        var kids = this.state.kids;
-        var draggedKid = kids[dragIndex];
-        console.log(dragIndex, hoverIndex)
+        const kids: Object[] = this.state.kids;
+        const draggedKid: Object = kids[dragIndex];
 
-        const l = Math.min(dragIndex, hoverIndex);
-        const r = Math.max(dragIndex, hoverIndex);
+        const l: number = Math.min(dragIndex, hoverIndex);
+        const r: number = Math.max(dragIndex, hoverIndex);
 
-        var newKids = [...kids.slice(0, l), ...kids.slice(l+1, r+1), kids[l], ...kids.slice(r+1)];
+        var newKids: Object[] = [...kids.slice(0, l), ...kids.slice(l+1, r+1), kids[l], ...kids.slice(r+1)];
 
         this.setState({
             kids: newKids,
         });
-
     }
 
     onAddChild(itemSign: Object) {
+        const name: string = itemSign.name;
+        const compToBeAdded: string = leftpaneToCanvasMap.get(name) || 'dummyKey';
+        const compCountMap: Object = this.state.compCountMap;
 
-        const name = itemSign.name;
-        console.log('name',name)
-        const compToBeAdded = leftpaneToCanvasMap.get(name) || 'dummyKey';
-        const compCountMap = this.state.compCountMap;
-
-        const newCountMap = Object.assign({}, compCountMap, {
+        const newCountMap: Object = Object.assign({}, compCountMap, {
             [compToBeAdded] : compCountMap[compToBeAdded] + 1
         })
         var data;
-        const compId = compToBeAdded ? compToBeAdded.toString() + this.state.compCountMap[compToBeAdded] : '1';
-        const newKid = {'type': compToBeAdded,  'id': compId, 'data':data};
-        const newKidArray = [...this.state.kids, newKid]
+        const compId: string = compToBeAdded ? compToBeAdded.toString() + this.state.compCountMap[compToBeAdded] : '1';
+        const newKid: Object = {'type': compToBeAdded,  'id': compId, 'data':data};
+        const newKidArray: Object[] = [...this.state.kids, newKid];
 
         this.setState({
             numKids: this.state.numKids + 1,

@@ -9,16 +9,18 @@ class FormButton extends React.Component {
 
     constructor(props: any) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        const self: any = this;
+        self.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(){
-        this.props.getComponentData(this.currentItems);
+        const self: any = this;
+        this.props.getComponentData(self.currentItems);
     }
 
     render() {
-        let elementId = this.props.id;
-        let elementDataObj = this.props.dataForGeneratingElements;
+        let elementId: string = this.props.id;
+        let elementDataObj: Object = this.props.dataForGeneratingElements;
         if(typeof elementDataObj == 'undefined'){
             elementDataObj = {
                 elementData:[
@@ -27,18 +29,25 @@ class FormButton extends React.Component {
                 ],
                 label:'Default Button'
             }
-
         }
 
-        this.currentItems = {
-          id:this.props.id,
-          component:'FormButton',
-          elementData:elementDataObj.elementData,
-          label:elementDataObj.label
+        const self: any = this;
+
+        self.currentItems = {
+          id: this.props.id,
+          component: 'FormButton',
+          elementData: elementDataObj.elementData,
+          label: elementDataObj.label
         }
+
         return (
             <div className='formComponent' onClick={this.handleClick}>
-                <Button bsStyle={elementDataObj.elementData[0].style} bsSize={elementDataObj.elementData[1].size}>{elementDataObj.label}</Button>
+                <Button
+                    bsStyle = {elementDataObj.elementData[0].style }
+                    bsSize = {elementDataObj.elementData[1].size }
+                >
+                    {elementDataObj.label}
+                </Button>
             </div>
         );
     }
