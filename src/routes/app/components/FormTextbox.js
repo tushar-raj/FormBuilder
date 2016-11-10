@@ -9,14 +9,39 @@ class FormTextbox extends React.Component {
 
     constructor(props: any) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        this.props.getComponentData(this.currentItems);
     }
 
     render() {
+        let elementId = this.props.id;
+        let elementDataObj = this.props.dataForGeneratingElements;
+        if(typeof elementDataObj == 'undefined'){
+            elementDataObj = {
+                elementData:[
+                    {pattern:'[A-Za-z0-9]{3,}'},
+                    {maxLength:20}
+                ],
+                label:'Default Text Box'
+            }
+        }
+
+        this.currentItems = {
+          id:this.props.id,
+          component:'FormTextbox',
+          elementData:elementDataObj.elementData,
+          label:elementDataObj.label
+        }
         return (
-            <div  className='formComponent' >
-                <ControlLabel>{this.props.id}</ControlLabel>
+            <div className='formComponent' onClick={this.handleClick}>
+                <ControlLabel>{elementDataObj.label}</ControlLabel>
                 <FormControl
-                    type="text"
+                    type='text'
+                    pattern = {elementDataObj.elementData[0].pattern}
+                    maxLength = {elementDataObj.elementData[1].maxLength}
                     placeholder="Enter text"
                 />
           </div>

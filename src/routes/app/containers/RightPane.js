@@ -5,7 +5,8 @@ import { Panel, ControlLabel, Button, Radio } from 'react-bootstrap';
 import BasicInputText from '../components/BasicInputText';
 import BasicRadioButton from '../components/BasicRadioButton';
 import EditableSection from '../components/EditableSection';
-import PubSub from '../PubSub/PubSub'
+import PubSub from '../PubSub/PubSub';
+import {regexPatterns} from '../../../common/regexPatterns';
 
 export default class RightPane extends React.Component {
 
@@ -29,6 +30,14 @@ export default class RightPane extends React.Component {
         this.onMoveElementDown = this.onMoveElementDown.bind(this);
         this.radioChangeHandlerForButtonOptions = this.radioChangeHandlerForButtonOptions.bind(this);
         this.onUpdateTextAreaProps = this.onUpdateTextAreaProps.bind(this);
+        this.changeHandlerForInputPatternOptions = this.changeHandlerForInputPatternOptions.bind(this);
+    }
+
+    changeHandlerForInputPatternOptions(value){
+        let currentList = this.state.componentToEdit;
+        currentList.elementData[0].pattern = value;
+        this.props.receiveUpdatedData(currentList);
+        this.updateStateData(currentList);
     }
 
     onUpdateTextAreaProps(updatedValue, type){
@@ -240,7 +249,7 @@ export default class RightPane extends React.Component {
                     />
                     <ControlLabel> Enter Number of Rows: </ControlLabel>
 
-                    <BasicInputText 
+                    <BasicInputText
                         type="rowsLabel"
                         value={componentToEdit.elementData[0].rows}
                         updatedValue={this.onUpdateTextAreaProps}
@@ -249,9 +258,36 @@ export default class RightPane extends React.Component {
 
             break;
 
-            default:
-                itemsToDisplay = null;
-            break;
+            case 'FormTextbox':
+                let patterns = [
+                    {key: 'Default', value:regexPatterns.defaultPattern},
+                    {key: 'Email', value:regexPatterns.email},
+                    {key: 'Alphabet', value:regexPatterns.alphabet},
+                    {key: 'AlphaNumeric', value:regexPatterns.alphaNumeric},
+                    {key: 'Numeric', value:regexPatterns.numeric},
+                    {key: 'Custom', value:''},
+                ];
+                let patternOptions = patterns.map((item,index) => {
+                    if(item.value == componentToEdit.elementData[0].pattern){
+                        return <BasicRadioButton checked="checked" name="patterns" updatedValue={this.changeHandlerForInputPatternOptions} key={index} value={item.value} labelName={item.key} />
+                    } else {
+                        return <BasicRadioButton checked="" name="patterns" updatedValue={this.changeHandlerForInputPatternOptions} key={index} value={item.value} labelName={item.key} />
+                    }
+                  }
+                );
+                itemsToDisplay = <div>
+                    <ControlLabel>Enter your question here:</ControlLabel>
+                    <BasicInputText type="questionLabel" value={componentToEdit.label} updatedValue={this.onUpdateTextAreaProps}/>
+                    <ControlLabel>Enter Number of Maximum Characters:</ControlLabel>
+                    <BasicInputText type="maxLengthLabel" value={componentToEdit.elementData[1].maxLength} updatedValue={this.onUpdateTextAreaProps}/>
+                    <ControlLabel>Select Pattern:</ControlLabel>
+                    {patternOptions}
+                </div>;
+                break;
+
+                default:
+                    itemsToDisplay = null;
+                break;
 
         }
 
