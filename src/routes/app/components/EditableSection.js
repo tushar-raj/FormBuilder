@@ -1,6 +1,8 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
 import BasicInputText from './BasicInputText';
+
+import styles from '../styles/rightPane.css'
 
 class EditableSection extends React.Component{
     constructor(props){
@@ -28,11 +30,18 @@ class EditableSection extends React.Component{
     }
     render() {
         return(
-          <div>
-            <BasicInputText type={this.props.type} value={this.props.value} updatedValue={this.updatedValue} />
-            <Button onClick={this.moveElementUp}><div className='arrowUp'></div></Button>
-            <Button onClick={this.moveElementDown}><div className='arrowDown'></div></Button>
-            <Button onClick={this.deleteItem}><div className='deleteEditableEl'>X</div></Button>
+          <div className={styles.editableSection}>
+            <BasicInputText
+                type={this.props.type}
+                value={this.props.value}
+                updatedValue={this.updatedValue}
+                className={styles.editableSectionInput}
+            />
+
+
+                <Button onClick={this.moveElementUp} className={styles.editableSectionBtn}> ▲ </Button>
+                <Button onClick={this.moveElementDown} className={styles.editableSectionBtn}> ▼ </Button>
+                <Button onClick={this.deleteItem} className={styles.editableSectionBtn}> ❌ </Button>
           </div>
         );
       }
