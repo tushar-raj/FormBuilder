@@ -1,0 +1,11 @@
+.canvasCompWrapper {
+    padding: 5px;
+    border-radius: 15px;
+    margin: 10px 0px;
+    box-shadow: 0px 4px 3px lightgray;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.canvasCompWrapper:hover {
+    background-color: #EEE !important;
+}

@@ -5,7 +5,7 @@ import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash.flow';
 
-import styles from '../styles/canvas.css'
+import styles from '../styles/canvasCompWrapper.css'
 
 import ItemTypes from '../../../constants/itemTypes';
 
