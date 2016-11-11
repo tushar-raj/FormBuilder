@@ -6,7 +6,7 @@ import BasicInputText from '../components/BasicInputText';
 import BasicRadioButton from '../components/BasicRadioButton';
 import EditableSection from '../components/EditableSection';
 import PubSub from '../PubSub/PubSub';
-import {regexPatterns} from '../../../common/regexPatterns';
+import regexPatterns from '../../../constants/regexPatterns';
 
 export default class RightPane extends React.Component {
 
@@ -22,15 +22,18 @@ export default class RightPane extends React.Component {
         }
 
         PubSub.subscribe('fillRightPaneWithData', this.updateStateData.bind(this))
-        this.editableItems = [];
-        this.addElement = this.addElement.bind(this);
-        this.onDeleteElement = this.onDeleteElement.bind(this);
-        this.onUpdateValue = this.onUpdateValue.bind(this);
-        this.onMoveElementUp = this.onMoveElementUp.bind(this);
-        this.onMoveElementDown = this.onMoveElementDown.bind(this);
-        this.radioChangeHandlerForButtonOptions = this.radioChangeHandlerForButtonOptions.bind(this);
-        this.onUpdateTextAreaProps = this.onUpdateTextAreaProps.bind(this);
-        this.changeHandlerForInputPatternOptions = this.changeHandlerForInputPatternOptions.bind(this);
+
+        var self: any = this;
+
+        self.editableItems = [];
+        self.addElement = self.addElement.bind(self);
+        self.onDeleteElement = self.onDeleteElement.bind(self);
+        self.onUpdateValue = self.onUpdateValue.bind(self);
+        self.onMoveElementUp = self.onMoveElementUp.bind(self);
+        self.onMoveElementDown = self.onMoveElementDown.bind(self);
+        self.radioChangeHandlerForButtonOptions = self.radioChangeHandlerForButtonOptions.bind(self);
+        self.onUpdateTextAreaProps = self.onUpdateTextAreaProps.bind(self);
+        self.changeHandlerForInputPatternOptions = self.changeHandlerForInputPatternOptions.bind(self);
     }
 
     changeHandlerForInputPatternOptions(value){
@@ -263,15 +266,27 @@ export default class RightPane extends React.Component {
                     {key: 'Default', value:regexPatterns.defaultPattern},
                     {key: 'Email', value:regexPatterns.email},
                     {key: 'Alphabet', value:regexPatterns.alphabet},
-                    {key: 'AlphaNumeric', value:regexPatterns.alphaNumeric},
+                    {key: 'Alphanumeric', value:regexPatterns.alphaNumeric},
                     {key: 'Numeric', value:regexPatterns.numeric},
                     {key: 'Custom', value:''},
                 ];
                 let patternOptions = patterns.map((item,index) => {
                     if(item.value == componentToEdit.elementData[0].pattern){
-                        return <BasicRadioButton checked="checked" name="patterns" updatedValue={this.changeHandlerForInputPatternOptions} key={index} value={item.value} labelName={item.key} />
+                        return <BasicRadioButton
+                            checked="checked"
+                            name="patterns"
+                            updatedValue={this.changeHandlerForInputPatternOptions}
+                            key={index} value={item.value}
+                            labelName={item.key}
+                        />
                     } else {
-                        return <BasicRadioButton checked="" name="patterns" updatedValue={this.changeHandlerForInputPatternOptions} key={index} value={item.value} labelName={item.key} />
+                        return <BasicRadioButton
+                            checked=""
+                            name="patterns"
+                            updatedValue={this.changeHandlerForInputPatternOptions}
+                            key={index} value={item.value}
+                            labelName={item.key}
+                        />
                     }
                   }
                 );

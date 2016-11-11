@@ -6,7 +6,7 @@ const alphabetPattern = '[A-Za-z]';
 const numericPattern = '[0-9]';
 const datePatternInDDMMYYYY = '';
 
-const patternObj = {
+const regexPatterns = {
 	defaultPattern: defaultPattern,
 	email:emailPattern,
 	alphaNumeric: alphaNumericPattern,
@@ -17,4 +17,4 @@ const patternObj = {
 	}
 }
 
-export {patternObj as regexPatterns}
+export default regexPatterns;

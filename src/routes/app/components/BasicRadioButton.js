@@ -19,11 +19,24 @@ class BasicRadioButton extends React.Component{
    render() {
        if(this.props.checked == 'checked'){
            return(
-               <Radio checked name={this.props.name} onChange={this.handleChange} value={this.state.value || ''}>{this.props.labelName}</Radio>
+                <Radio
+                    checked
+                    name={this.props.name}
+                    onChange={this.handleChange}
+                    value={this.state.value || ''}
+                >
+                    { this.props.labelName }
+                </Radio>
            );
        } else {
            return(
-               <Radio name={this.props.name} onChange={this.handleChange} value={this.state.value || ''}>{this.props.labelName}</Radio>
+                <Radio
+                    name={this.props.name}
+                    onChange={this.handleChange}
+                    value={this.state.value || ''}
+                >
+                    { this.props.labelName }
+                </Radio>
            );
        }
 
