@@ -36,7 +36,7 @@ export default class RightPane extends React.Component {
         self.changeHandlerForInputPatternOptions = self.changeHandlerForInputPatternOptions.bind(self);
 		self.onUpdateCustomPattern = self.onUpdateCustomPattern.bind(self);
     }
-	
+
 	onUpdateCustomPattern(updatedValue){
         let currentList = this.state.componentToEdit;
         currentList.elementData[0].pattern = updatedValue;
@@ -54,7 +54,7 @@ export default class RightPane extends React.Component {
         }
         this.props.receiveUpdatedData(currentList);
         this.updateStateData(currentList);
-    }   
+    }
 
     onUpdateTextAreaProps(updatedValue, type){
         let currentList = this.state.componentToEdit;
@@ -275,22 +275,21 @@ export default class RightPane extends React.Component {
             break;
 
             case 'FormTextbox':
-				
+
                 let patterns = [
                     {key: 'Default', type:'predefined', value:regexPatterns.defaultPattern},
                     {key: 'Email', type:'predefined', value:regexPatterns.email},
                     {key: 'Alphabet', type:'predefined', value:regexPatterns.alphabet},
                     {key: 'Alphanumeric', type:'predefined', value:regexPatterns.alphaNumeric},
-                    {key: 'Numeric', type:'predefined', value:regexPatterns.numeric},
-                    {key: 'Custom', type:'predefined', value:''},
+                    {key: 'Numeric', type:'predefined', value:regexPatterns.numeric}                    
                 ];
-				
+
 				if(componentToEdit.elementData[0].type == 'custom'){
                     patterns.push({key: 'Custom', type:'custom', value:componentToEdit.elementData[0].pattern});
                 } else {
                     patterns.push({key: 'Custom', type:'custom', value:''});
                 }
-				
+
                 let patternOptions = patterns.map((item,index) => {
                     if(item.value == componentToEdit.elementData[0].pattern){
                         return <BasicRadioButton
