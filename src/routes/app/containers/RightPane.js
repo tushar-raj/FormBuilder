@@ -34,14 +34,27 @@ export default class RightPane extends React.Component {
         self.radioChangeHandlerForButtonOptions = self.radioChangeHandlerForButtonOptions.bind(self);
         self.onUpdateTextAreaProps = self.onUpdateTextAreaProps.bind(self);
         self.changeHandlerForInputPatternOptions = self.changeHandlerForInputPatternOptions.bind(self);
+		self.onUpdateCustomPattern = self.onUpdateCustomPattern.bind(self);
     }
-
-    changeHandlerForInputPatternOptions(value){
+	
+	onUpdateCustomPattern(updatedValue){
         let currentList = this.state.componentToEdit;
-        currentList.elementData[0].pattern = value;
+        currentList.elementData[0].pattern = updatedValue;
         this.props.receiveUpdatedData(currentList);
         this.updateStateData(currentList);
     }
+
+    changeHandlerForInputPatternOptions(value,name,labelName){
+        let currentList = this.state.componentToEdit;
+        currentList.elementData[0].pattern = value;
+        if(labelName == 'Custom'){
+            currentList.elementData[0].type = 'custom';
+        } else {
+            currentList.elementData[0].type = 'predefined';
+        }
+        this.props.receiveUpdatedData(currentList);
+        this.updateStateData(currentList);
+    }   
 
     onUpdateTextAreaProps(updatedValue, type){
         let currentList = this.state.componentToEdit;
@@ -262,14 +275,22 @@ export default class RightPane extends React.Component {
             break;
 
             case 'FormTextbox':
+				
                 let patterns = [
-                    {key: 'Default', value:regexPatterns.defaultPattern},
-                    {key: 'Email', value:regexPatterns.email},
-                    {key: 'Alphabet', value:regexPatterns.alphabet},
-                    {key: 'Alphanumeric', value:regexPatterns.alphaNumeric},
-                    {key: 'Numeric', value:regexPatterns.numeric},
-                    {key: 'Custom', value:''},
+                    {key: 'Default', type:'predefined', value:regexPatterns.defaultPattern},
+                    {key: 'Email', type:'predefined', value:regexPatterns.email},
+                    {key: 'Alphabet', type:'predefined', value:regexPatterns.alphabet},
+                    {key: 'Alphanumeric', type:'predefined', value:regexPatterns.alphaNumeric},
+                    {key: 'Numeric', type:'predefined', value:regexPatterns.numeric},
+                    {key: 'Custom', type:'predefined', value:''},
                 ];
+				
+				if(componentToEdit.elementData[0].type == 'custom'){
+                    patterns.push({key: 'Custom', type:'custom', value:componentToEdit.elementData[0].pattern});
+                } else {
+                    patterns.push({key: 'Custom', type:'custom', value:''});
+                }
+				
                 let patternOptions = patterns.map((item,index) => {
                     if(item.value == componentToEdit.elementData[0].pattern){
                         return <BasicRadioButton
@@ -290,6 +311,13 @@ export default class RightPane extends React.Component {
                     }
                   }
                 );
+				let customPatternInputBox;
+                console.log('type', componentToEdit.elementData[0].type)
+                if(componentToEdit.elementData[0].type == 'custom'){
+                    customPatternInputBox = <div>
+                } else {
+                    customPatternInputBox = '';
+                }
                 itemsToDisplay = <div>
                     <ControlLabel>Enter your question here:</ControlLabel>
                     <BasicInputText type="questionLabel" value={componentToEdit.label} updatedValue={this.onUpdateTextAreaProps}/>
@@ -297,6 +325,7 @@ export default class RightPane extends React.Component {
                     <BasicInputText type="maxLengthLabel" value={componentToEdit.elementData[1].maxLength} updatedValue={this.onUpdateTextAreaProps}/>
                     <ControlLabel>Select Pattern:</ControlLabel>
                     {patternOptions}
+					{customPatternInputBox}
                 </div>;
                 break;
 

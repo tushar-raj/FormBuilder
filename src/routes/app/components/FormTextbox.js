@@ -22,7 +22,7 @@ class FormTextbox extends React.Component {
         if(typeof elementDataObj == 'undefined'){
             elementDataObj = {
                 elementData:[
-                    {pattern:'[A-Za-z0-9]{3,}'},
+					{type:'predefined', pattern:'[A-Za-z0-9]{3,}'},
                     {maxLength:20}
                 ],
                 label:'Default Text Box'
