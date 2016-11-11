@@ -315,6 +315,15 @@ export default class RightPane extends React.Component {
                 console.log('type', componentToEdit.elementData[0].type)
                 if(componentToEdit.elementData[0].type == 'custom'){
                     customPatternInputBox = <div>
+						<ControlLabel>
+							Enter your custom pattern:
+						</ControlLabel>
+						<BasicInputText
+							type="questionLabel"
+							value={componentToEdit.elementData[0].pattern}
+							updatedValue={this.onUpdateCustomPattern}
+						/>
+					</div>
                 } else {
                     customPatternInputBox = '';
                 }
