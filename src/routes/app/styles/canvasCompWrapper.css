@@ -8,4 +8,5 @@
 
 .canvasCompWrapper:hover {
     background-color: #EEE !important;
+    border-bottom: 1px solid black;
 }

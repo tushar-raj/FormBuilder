@@ -4,38 +4,9 @@ import React from 'react';
 
 import LeftPaneItem from '../components/LeftPaneItem';
 import ItemTypes from '../../../constants/itemTypes';
+import leftPaneItems from '../../../constants/leftPaneItems';
 
-/*This needs to be moved elsewhere */
-
-const leftPaneItemArray: Object[] = [
-    {
-        imagePath: 'input_textbox.png',
-        componentTitle: 'Textbox',
-        name: 'Textbox',
-    }, {
-        imagePath: 'input_textarea.png',
-        componentTitle: 'Text Area',
-        name: 'TextArea',
-    }, {
-        imagePath: 'options_checkbox.png',
-        componentTitle: 'Checkbox Group',
-        name: 'CheckboxGroup',
-    }, {
-        imagePath: 'options_radio.png',
-        componentTitle: 'Radio Button Group',
-        name: 'RadioButtonGroup',
-    }, {
-        imagePath: 'input_selectbox.png',
-        componentTitle: 'SelectBox',
-        name: 'SelectBox',
-    }, {
-        imagePath: 'button_ok.png',
-        componentTitle: 'Button',
-        name: 'Button',
-    }
-];
-
-const leftPaneItems: Object[] = leftPaneItemArray.map(
+const leftPaneItemArray: Object[] = leftPaneItems.map(
     (item, index) =>
         <LeftPaneItem
             key = { index }
@@ -44,13 +15,12 @@ const leftPaneItems: Object[] = leftPaneItemArray.map(
             name = { item.name }
         />
     );
-    
-export default class LeftPane extends React.Component {
 
+export default class LeftPane extends React.Component {
     render() {
         return (
             <div id = 'LeftPane'>
-                { leftPaneItems }
+                { leftPaneItemArray }
             </div>
         );
     }
